@@ -5,25 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
-        <scene sceneID="seh-5i-ZQ9">
-            <objects>
-                <viewController id="UoA-pQ-fer" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6zn-9Z-lsO"/>
-                        <viewControllerLayoutGuide type="bottom" id="tWj-Ad-fSk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fiu-xe-AzP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Feed" id="UOC-eb-2zx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TM8-o6-NPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1136" y="893"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="Oem-JM-c0s">
             <objects>
@@ -92,11 +73,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="mlV-vo-Ul6"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="mlV-vo-Ul6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zme-df-jVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1136" y="232"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="sPw-2n-jiP">
+            <objects>
+                <tableViewController id="SZZ-Bl-3kS" customClass="FeedTableViewController" customModule="BookLet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T1i-Lz-UOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LeP-hv-PWW">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LeP-hv-PWW" id="hU3-U4-s1j">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SZZ-Bl-3kS" id="C1T-DS-Wis"/>
+                            <outlet property="delegate" destination="SZZ-Bl-3kS" id="7IB-Rr-dXG"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Feed" id="Kvh-fH-BLj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vFx-71-Vtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1130" y="903"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WsK-Ax-AE3">
@@ -109,7 +119,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="2Qe-ga-1rh" kind="relationship" relationship="viewControllers" id="Jvr-54-Lfw"/>
-                        <segue destination="UoA-pQ-fer" kind="relationship" relationship="viewControllers" id="Iq9-Gz-kb7"/>
+                        <segue destination="SZZ-Bl-3kS" kind="relationship" relationship="viewControllers" id="yaD-sb-VJ4"/>
                         <segue destination="fhU-WD-xmv" kind="relationship" relationship="viewControllers" id="Dqf-rl-C6O"/>
                     </connections>
                 </tabBarController>
@@ -118,4 +128,7 @@
             <point key="canvasLocation" x="316" y="563"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="search" width="128" height="128"/>
+    </resources>
 </document>

@@ -13,6 +13,7 @@
 		D5A3834D1CCEE0D20064A87D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A3834B1CCEE0D20064A87D /* LaunchScreen.storyboard */; };
 		D5A383581CCEE0D20064A87D /* BookLetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383571CCEE0D20064A87D /* BookLetTests.swift */; };
 		D5A383631CCEE0D20064A87D /* BookLetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383621CCEE0D20064A87D /* BookLetUITests.swift */; };
+		D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383701CCEE9950064A87D /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		D5A3835E1CCEE0D20064A87D /* BookLetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A383621CCEE0D20064A87D /* BookLetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLetUITests.swift; sourceTree = "<group>"; };
 		D5A383641CCEE0D20064A87D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5A383701CCEE9950064A87D /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		D5A383411CCEE0D20064A87D /* BookLet */ = {
 			isa = PBXGroup;
 			children = (
+				D5A383701CCEE9950064A87D /* FeedTableViewController.swift */,
 				D5A383421CCEE0D20064A87D /* AppDelegate.swift */,
 				D5A383461CCEE0D20064A87D /* Main.storyboard */,
 				D5A383491CCEE0D20064A87D /* Assets.xcassets */,
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */,
+				D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
