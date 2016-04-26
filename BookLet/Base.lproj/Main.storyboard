@@ -54,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" id="AEc-wb-sbI"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="person" id="AEc-wb-sbI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8L-Ns-LYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,22 +79,44 @@
             </objects>
             <point key="canvasLocation" x="1136" y="232"/>
         </scene>
-        <!--Feed-->
+        <!--Shelf-->
         <scene sceneID="sPw-2n-jiP">
             <objects>
                 <tableViewController id="SZZ-Bl-3kS" customClass="FeedTableViewController" customModule="BookLet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T1i-Lz-UOJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="T1i-Lz-UOJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LeP-hv-PWW">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="100" id="LeP-hv-PWW" customClass="FeedTableViewCell" customModule="BookLet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LeP-hv-PWW" id="hU3-U4-s1j">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwO-er-Qmc">
+                                            <rect key="frame" x="0.0" y="0.0" width="107" height="99"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESz-DU-JZn">
+                                            <rect key="frame" x="115" y="15" width="485" height="39"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXc-iV-emJ">
+                                            <rect key="frame" x="115" y="54" width="485" height="37"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookIcon" destination="kwO-er-Qmc" id="bZa-kN-EOl"/>
+                                    <outlet property="bookOwnerUsername" destination="VXc-iV-emJ" id="IuX-ym-79Y"/>
+                                    <outlet property="bookTitle" destination="ESz-DU-JZn" id="nt5-R0-ZsH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -102,7 +124,7 @@
                             <outlet property="delegate" destination="SZZ-Bl-3kS" id="7IB-Rr-dXG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Feed" id="Kvh-fH-BLj"/>
+                    <tabBarItem key="tabBarItem" title="Shelf" image="books" id="Kvh-fH-BLj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFx-71-Vtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,6 +151,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="search" width="128" height="128"/>
+        <image name="books" width="30" height="22"/>
+        <image name="person" width="30" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
 </document>

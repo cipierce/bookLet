@@ -1,0 +1,27 @@
+//
+//  Data.swift
+//  BookLet
+//
+//  Created by Caroline Pierce on 4/26/16.
+//  Copyright © 2016 Caroline Pierce and Gina Stalica. All rights reserved.
+//
+
+import UIKit
+
+class Data {
+    class Book {
+        let bookTitle: String
+        let bookOwner: String
+        let bookImage: String
+        init(title: String, owner: String, imagefname: String){
+            self.bookTitle = title
+            self.bookOwner = owner
+            self.bookImage = imagefname
+        }
+    }
+    
+    let testBooks = [
+        Book(title: "Alice in Wonderland", owner: "Gina", imagefname: "aliceInWonderland"),
+        Book(title: "Green Eggs and Ham", owner: "Caroline", imagefname: "greenEggsAndHam")
+    ]
+}

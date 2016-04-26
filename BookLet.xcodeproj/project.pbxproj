@@ -14,6 +14,8 @@
 		D5A383581CCEE0D20064A87D /* BookLetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383571CCEE0D20064A87D /* BookLetTests.swift */; };
 		D5A383631CCEE0D20064A87D /* BookLetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383621CCEE0D20064A87D /* BookLetUITests.swift */; };
 		D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383701CCEE9950064A87D /* FeedTableViewController.swift */; };
+		D5A38FC41CCFF68D00B9B257 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */; };
+		D5A38FC61CCFF95B00B9B257 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A38FC51CCFF95B00B9B257 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		D5A383621CCEE0D20064A87D /* BookLetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLetUITests.swift; sourceTree = "<group>"; };
 		D5A383641CCEE0D20064A87D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5A383701CCEE9950064A87D /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		D5A38FC51CCFF95B00B9B257 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				D5A383701CCEE9950064A87D /* FeedTableViewController.swift */,
 				D5A383421CCEE0D20064A87D /* AppDelegate.swift */,
 				D5A383461CCEE0D20064A87D /* Main.storyboard */,
+				D5A38FC51CCFF95B00B9B257 /* Data.swift */,
+				D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */,
 				D5A383491CCEE0D20064A87D /* Assets.xcassets */,
 				D5A3834B1CCEE0D20064A87D /* LaunchScreen.storyboard */,
 				D5A3834E1CCEE0D20064A87D /* Info.plist */,
@@ -257,7 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */,
+				D5A38FC41CCFF68D00B9B257 /* FeedTableViewCell.swift in Sources */,
 				D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */,
+				D5A38FC61CCFF95B00B9B257 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +490,7 @@
 				D5A383691CCEE0D20064A87D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5A3836A1CCEE0D20064A87D /* Build configuration list for PBXNativeTarget "BookLetTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				D5A3836C1CCEE0D20064A87D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5A3836D1CCEE0D20064A87D /* Build configuration list for PBXNativeTarget "BookLetUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +508,7 @@
 				D5A3836F1CCEE0D20064A87D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
