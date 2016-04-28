@@ -180,19 +180,60 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i65-A0-eSh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i65-A0-eSh">
                                             <rect key="frame" x="15" y="0.0" width="577" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Title">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="16" name="GillSans"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-qs-lXe">
-                                            <rect key="frame" x="15" y="20" width="577" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-qs-lXe">
+                                            <rect key="frame" x="48" y="20" width="544" height="23"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Owner">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="11" name="GillSans"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55B-hc-4uk">
+                                            <rect key="frame" x="15" y="20" width="25" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="v2X-Th-Feh"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="from">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="11" name="GillSans"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="i65-A0-eSh" secondAttribute="bottom" constant="14" id="HrT-vQ-W6y"/>
+                                        <constraint firstItem="i65-A0-eSh" firstAttribute="leading" secondItem="SRF-L0-elo" secondAttribute="leadingMargin" constant="7" id="HuN-Nz-1vx"/>
+                                        <constraint firstItem="55B-hc-4uk" firstAttribute="top" secondItem="SRF-L0-elo" secondAttribute="topMargin" constant="12" id="Lvb-Bw-eeV"/>
+                                        <constraint firstItem="hqP-qs-lXe" firstAttribute="firstBaseline" secondItem="55B-hc-4uk" secondAttribute="firstBaseline" id="T63-k5-da6"/>
+                                        <constraint firstItem="55B-hc-4uk" firstAttribute="baseline" secondItem="hqP-qs-lXe" secondAttribute="baseline" id="YAy-CG-Ezn"/>
+                                        <constraint firstItem="55B-hc-4uk" firstAttribute="leading" secondItem="i65-A0-eSh" secondAttribute="leading" id="cCs-Qk-hVM"/>
+                                        <constraint firstItem="i65-A0-eSh" firstAttribute="top" secondItem="SRF-L0-elo" secondAttribute="top" id="eJ7-Db-8PI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="i65-A0-eSh" secondAttribute="trailing" constant="-33" id="glz-Q6-OBo"/>
+                                        <constraint firstAttribute="bottom" secondItem="55B-hc-4uk" secondAttribute="bottom" id="nbr-nD-eMR"/>
+                                        <constraint firstItem="hqP-qs-lXe" firstAttribute="leading" secondItem="55B-hc-4uk" secondAttribute="trailing" constant="8" symbolic="YES" id="tjV-vs-zP8"/>
+                                        <constraint firstItem="hqP-qs-lXe" firstAttribute="trailing" secondItem="i65-A0-eSh" secondAttribute="trailing" id="wt9-Id-k88"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bookOwner" destination="hqP-qs-lXe" id="A6g-Zg-CIg"/>
@@ -255,7 +296,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="User">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="NSColor" red="0.50151909722222221" green="0.50151909722222221" blue="0.50151909722222221" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="15" name="GillSans"/>
                                                     </attributes>
                                                 </fragment>
