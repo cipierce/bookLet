@@ -9,8 +9,13 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController {
+    
+    struct StringConstants {
+        static let bookSegueIdentifier = "ShowBookSegue"
+    }
 
     let testData = Data()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,19 +34,16 @@ class FeedTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return testData.testBooks.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
-        // Configure the cell
         let entry = testData.testBooks[indexPath.row]
         cell!.bookTitle.text = entry.bookTitle
         cell!.bookOwnerUsername.text = entry.bookOwner
@@ -86,14 +88,25 @@ class FeedTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == StringConstants.bookSegueIdentifier {
+            if let destinationController = segue.destinationViewController as? UINavigationController {
+                if let destination = destinationController.topViewController as? BookViewController {
+                    if let bookIndex = tableView.indexPathForSelectedRow {
+                        destination.currentBook = testData.testBooks[bookIndex.row]
+                        //FIXME: back button
+//                        destination.navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
+//                        destination.navigationItem.leftItemsSupplementBackButton = true
+                    }
+                }
+                
+            }
+        }
     }
-    */
+
 
 }
