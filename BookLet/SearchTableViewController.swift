@@ -12,6 +12,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     /*Search implemented by adapting tutorial:
     ** https://www.raywenderlich.com/113772/uisearchcontroller-tutorial */
     
+    struct StringConstants {
+        static let bookSegueIdentifier = "ShowSearchResult"
+    }
+    
     let testData = Data()
     
     var filteredData: [Data.Book] = []
@@ -113,14 +117,23 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == StringConstants.bookSegueIdentifier {
+            if let destination = segue.destinationViewController as? BookViewController {
+                if let bookIndex = tableView.indexPathForSelectedRow {
+                    if searchController.active && searchController.searchBar.text != "" {
+                        destination.currentBook = filteredData[bookIndex.row]
+                    } else {
+                        destination.currentBook = testData.testBooks[bookIndex.row]
+                    }
+                }
+            }
+        }
     }
-    */
+    
 
 }

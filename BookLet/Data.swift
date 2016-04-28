@@ -20,7 +20,7 @@ class Data {
             self.bookOwner = owner
             self.bookImage = imagefname
             self.bookOwned = false
-            self.bookFree = false
+            self.bookFree = true
         }
     }
     
