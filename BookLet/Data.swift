@@ -13,10 +13,14 @@ class Data {
         let bookTitle: String
         let bookOwner: String
         let bookImage: String
+        let bookOwned: Bool
+        let bookFree: Bool
         init(title: String, owner: String, imagefname: String){
             self.bookTitle = title
             self.bookOwner = owner
             self.bookImage = imagefname
+            self.bookOwned = false
+            self.bookFree = false
         }
     }
     

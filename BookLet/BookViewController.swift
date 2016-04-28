@@ -26,6 +26,14 @@ class BookViewController: UIViewController {
     
     @IBOutlet weak var bookImage: UIImageView!
     
+    
+    @IBOutlet weak var buyBookButton: UIButton!
+    
+    @IBAction func buyBook() {
+    }
+    
+    @IBOutlet weak var returnBookButton: UIButton!
+    
     var currentBook: Data.Book? {
         didSet {
             setView()
@@ -34,12 +42,19 @@ class BookViewController: UIViewController {
     
     func setView() {
         if let currentBook = currentBook {
-            if let bookTitle = bookTitle { //is this line necessary?
+            if let bookTitle = bookTitle { //FIXME: is this line necessary?
+                bookTitle.adjustsFontSizeToFitWidth = true
+                bookImage.contentMode = .ScaleAspectFit
                 bookTitle.text = currentBook.bookTitle
                 bookOwner.text = currentBook.bookOwner
                 bookImage.image = UIImage(named: currentBook.bookImage)
+                returnBookButton.enabled = currentBook.bookOwned
+                if currentBook.bookFree {
+                    buyBookButton.setTitle("Borrow book", forState: .Normal)
+                }
             }
         }
+
     }
     
     /*
