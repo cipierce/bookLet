@@ -92,19 +92,13 @@ class FeedTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*send book information to next book page*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.bookSegueIdentifier {
-            if let destinationController = segue.destinationViewController as? UINavigationController {
-                if let destination = destinationController.topViewController as? BookViewController {
-                    if let bookIndex = tableView.indexPathForSelectedRow {
-                        destination.currentBook = testData.testBooks[bookIndex.row]
-                        //FIXME: back button
-//                        destination.navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
-//                        destination.navigationItem.leftItemsSupplementBackButton = true
-                    }
+            if let destination = segue.destinationViewController as? BookViewController {
+                if let bookIndex = tableView.indexPathForSelectedRow {
+                    destination.currentBook = testData.testBooks[bookIndex.row]
                 }
-                
             }
         }
     }

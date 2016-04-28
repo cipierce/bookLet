@@ -125,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VB2-ft-jxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563" y="510"/>
+            <point key="canvasLocation" x="3375" y="510"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I1m-Z1-59L">
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgz-oY-DE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815" y="1217"/>
+            <point key="canvasLocation" x="2627" y="1217"/>
         </scene>
         <!--Me-->
         <scene sceneID="Dph-4N-2wc">
@@ -211,7 +211,7 @@
             </objects>
             <point key="canvasLocation" x="1134" y="215"/>
         </scene>
-        <!--Shelf-->
+        <!--My Feed-->
         <scene sceneID="sPw-2n-jiP">
             <objects>
                 <tableViewController id="SZZ-Bl-3kS" customClass="FeedTableViewController" customModule="BookLet" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,7 +221,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="100" id="LeP-hv-PWW" customClass="FeedTableViewCell" customModule="BookLet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LeP-hv-PWW" id="hU3-U4-s1j">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="99"/>
@@ -279,7 +279,7 @@
                                     <outlet property="bookIcon" destination="kwO-er-Qmc" id="bZa-kN-EOl"/>
                                     <outlet property="bookOwnerUsername" destination="VXc-iV-emJ" id="IuX-ym-79Y"/>
                                     <outlet property="bookTitle" destination="ESz-DU-JZn" id="nt5-R0-ZsH"/>
-                                    <segue destination="Jza-w4-Y4V" kind="show" identifier="ShowBookSegue" id="toz-v7-Jrf"/>
+                                    <segue destination="WcZ-FR-NgI" kind="show" identifier="ShowBookSegue" id="CO3-HV-IUR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -288,11 +288,11 @@
                             <outlet property="delegate" destination="SZZ-Bl-3kS" id="7IB-Rr-dXG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Shelf" image="books" id="Kvh-fH-BLj"/>
+                    <navigationItem key="navigationItem" title="My Feed" id="7uj-1Y-7xZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFx-71-Vtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1130" y="903"/>
+            <point key="canvasLocation" x="1942" y="903"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WsK-Ax-AE3">
@@ -304,7 +304,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SZZ-Bl-3kS" kind="relationship" relationship="viewControllers" id="yaD-sb-VJ4"/>
+                        <segue destination="pfd-E2-nLc" kind="relationship" relationship="viewControllers" id="yaD-sb-VJ4"/>
                         <segue destination="oLQ-KF-H52" kind="relationship" relationship="viewControllers" id="IE1-hj-jvg"/>
                         <segue destination="fhU-WD-xmv" kind="relationship" relationship="viewControllers" id="Dqf-rl-C6O"/>
                     </connections>
@@ -313,23 +313,24 @@
             </objects>
             <point key="canvasLocation" x="316" y="563"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="b22-rn-reL">
+        <!--Shelf-->
+        <scene sceneID="8RI-a2-qww">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jza-w4-Y4V" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pfd-E2-nLc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shelf" image="books" id="Kvh-fH-BLj"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hgj-Xb-Pqu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEw-Sh-Sxf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="WcZ-FR-NgI" kind="relationship" relationship="rootViewController" id="Dzs-mx-dGm"/>
+                        <segue destination="SZZ-Bl-3kS" kind="relationship" relationship="rootViewController" id="8Y9-cx-OHj"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fyU-3S-qOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQf-k7-M0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="510"/>
+            <point key="canvasLocation" x="1130" y="903"/>
         </scene>
     </scenes>
     <resources>

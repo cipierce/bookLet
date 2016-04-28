@@ -30,6 +30,10 @@ class BookViewController: UIViewController {
     @IBOutlet weak var buyBookButton: UIButton!
     
     @IBAction func buyBook() {
+        let alert = UIAlertController(title: "Oops!", message: "This function is not yet implemented, sorry!", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Okay, no worries!", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+
     }
     
     @IBOutlet weak var returnBookButton: UIButton!
