@@ -47,6 +47,7 @@ class FeedTableViewController: UITableViewController {
         let entry = testData.testBooks[indexPath.row]
         cell!.bookTitle.text = entry.bookTitle
         cell!.bookOwnerUsername.text = entry.bookOwner
+        cell!.bookIcon.contentMode = .ScaleAspectFit
         cell!.bookIcon.image = UIImage(named: entry.bookImage)
         return cell!
         //FIXME: needs error handling
