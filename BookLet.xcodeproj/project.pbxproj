@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2805D70A1CD80B9300F17FE7 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805D7091CD80B9300F17FE7 /* HelperMethods.swift */; };
 		285046E31CCFF4EF00BEF671 /* PersonalUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285046E21CCFF4EF00BEF671 /* PersonalUserViewController.swift */; };
 		285046E51CCFF5DB00BEF671 /* PersonalUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285046E41CCFF5DB00BEF671 /* PersonalUserTableViewCell.swift */; };
 		D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383421CCEE0D20064A87D /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2805D7091CD80B9300F17FE7 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		285046E21CCFF4EF00BEF671 /* PersonalUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalUserViewController.swift; sourceTree = "<group>"; };
 		285046E41CCFF5DB00BEF671 /* PersonalUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalUserTableViewCell.swift; sourceTree = "<group>"; };
 		D5A3833F1CCEE0D20064A87D /* BookLet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 				D5A383421CCEE0D20064A87D /* AppDelegate.swift */,
 				285046E41CCFF5DB00BEF671 /* PersonalUserTableViewCell.swift */,
 				285046E21CCFF4EF00BEF671 /* PersonalUserViewController.swift */,
+				2805D7091CD80B9300F17FE7 /* HelperMethods.swift */,
 				D5A383461CCEE0D20064A87D /* Main.storyboard */,
 				D5A383491CCEE0D20064A87D /* Assets.xcassets */,
 				D5A3834B1CCEE0D20064A87D /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				285046E51CCFF5DB00BEF671 /* PersonalUserTableViewCell.swift in Sources */,
 				285046E31CCFF4EF00BEF671 /* PersonalUserViewController.swift in Sources */,
+				2805D70A1CD80B9300F17FE7 /* HelperMethods.swift in Sources */,
 				D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */,
 				D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */,
 			);

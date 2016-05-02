@@ -23,4 +23,13 @@ extension PersonalUserTableViewCell {
         collectionView.reloadData()
     }
     
+    var collectionViewOffset: CGFloat {
+        get {
+            return collectionView.contentOffset.x
+        }
+        set {
+            collectionView.contentOffset.x = newValue
+        }
+    }
+    
 }

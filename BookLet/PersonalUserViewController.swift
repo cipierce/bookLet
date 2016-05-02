@@ -10,7 +10,8 @@ import UIKit
 
 class PersonalUserViewController: UITableViewController {
     
-    let model: [[UIColor]] = [[UIColor.blueColor()]] //generateRandomData()
+    let model = generateRandomData()
+    var storedOffsets = [Int: CGFloat]()
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
@@ -27,16 +28,15 @@ class PersonalUserViewController: UITableViewController {
         guard let tableViewCell = cell as? PersonalUserTableViewCell else { return }
         
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
     }
     
-    func generateRandomData() -> [[UIColor]] {
-        let numRows = 20
-        let numItemsPerRow = 15
+    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard let tableViewCell = cell as? PersonalUserTableViewCell else { return }
         
-        return (0..<numRows).map { _ in
-            return (0..<numItemsPerRow).map { _ in UIColor.randomColor() }
-        }
+        storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
     }
+    
 }
 
 extension PersonalUserViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -49,36 +49,10 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
         cell.backgroundColor = model[collectionView.tag][indexPath.item]
         return cell
     }
-    /*
-    func generateRandomData() -> [[UIColor]] {
-        let numRows = 20
-        let numItemsPerRow = 15
-        
-        return (0..<numRows).map { _ in
-            return (0..<numItemsPerRow).map { _ in UIColor.randomColor() }
-        }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        print("collection view at row \(collectionView.tag) selected index path \(indexPath)")
     }
-    */
 
-}
-/*
-private extension PersonalUserViewController {
-    func generateRandomData() -> [[UIColor]] {
-        let numRows = 20
-        let numItemsPerRow = 15
-        
-        return (0..<numRows).map { _ in
-            return (0..<numItemsPerRow).map { _ in UIColor.randomColor() }
-        }
-    }
-}*/
 
-private extension UIColor {
-    class func randomColor() -> UIColor {
-        let hue = CGFloat(arc4random() % 100) / 100
-        let saturation = CGFloat(arc4random() % 100) / 100
-        let brightness = CGFloat(arc4random() % 100) / 100
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
-    }
 }
