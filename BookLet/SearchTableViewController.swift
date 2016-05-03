@@ -18,7 +18,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     let testData = Data()
     
-    var filteredData: [Data.Book] = []
+    var filteredData: [Book] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -68,17 +68,18 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SearchCell", forIndexPath: indexPath) as? SearchTableViewCell
-        let entry: Data.Book
-        if searchController.active && searchController.searchBar.text != "" {
-            entry = filteredData[indexPath.row]
-        } else {
-            entry = testData.testBooks[indexPath.row]
+        if let cell = tableView.dequeueReusableCellWithIdentifier("SearchCell", forIndexPath: indexPath) as? SearchTableViewCell {
+            let entry: Book
+            if searchController.active && searchController.searchBar.text != "" {
+                entry = filteredData[indexPath.row]
+            } else {
+                entry = testData.testBooks[indexPath.row]
+            }
+            cell.bookTitle.text = entry.bookTitle
+            cell.bookOwner.text = entry.bookOwner.username
+            return cell
         }
-        cell!.bookTitle.text = entry.bookTitle
-        cell!.bookOwner.text = entry.bookOwner
-        return cell!
-        //FIXME: needs error handling
+        return tableView.dequeueReusableCellWithIdentifier("SearchCell", forIndexPath: indexPath)
     }
     
 

@@ -46,7 +46,7 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
         let entry = testData.testBooks[indexPath.row]
         cell!.bookTitle.text = entry.bookTitle
-        cell!.bookOwnerUsername.text = entry.bookOwner
+        cell!.bookOwnerUsername.text = entry.bookOwner.username
         cell!.bookIcon.contentMode = .ScaleAspectFit
         cell!.bookIcon.image = UIImage(named: entry.bookImage)
         return cell!

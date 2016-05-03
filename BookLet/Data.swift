@@ -9,23 +9,12 @@
 import UIKit
 
 class Data {
-    class Book {
-        let bookTitle: String
-        let bookOwner: String
-        let bookImage: String
-        let bookOwned: Bool
-        let bookFree: Bool
-        init(title: String, owner: String, imagefname: String){
-            self.bookTitle = title
-            self.bookOwner = owner
-            self.bookImage = imagefname
-            self.bookOwned = false
-            self.bookFree = true
-        }
-    }
+    
+    static let gina = User(username: "Gina", emailAddress: "gstalica@bowdoin.edu")
+    static let caroline = User(username: "Caroline", emailAddress: "cpierce@bowdoin.edu")
     
     let testBooks = [
-        Book(title: "Alice in Wonderland", owner: "Gina", imagefname: "aliceInWonderland"),
-        Book(title: "Green Eggs and Ham", owner: "Caroline", imagefname: "greenEggsAndHam")
+        Book(title: "Alice in Wonderland", owner: gina, imagefname: "aliceInWonderland", bookOwned: true, bookFree: false),
+        Book(title: "Green Eggs and Ham", owner: caroline, imagefname: "greenEggsAndHam", bookOwned: false, bookFree: true)
     ]
 }

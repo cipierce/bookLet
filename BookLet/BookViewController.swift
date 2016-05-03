@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class BookViewController: UIViewController {
+class BookViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +27,36 @@ class BookViewController: UIViewController {
     
     @IBOutlet weak var bookImage: UIImageView!
     
-    
     @IBOutlet weak var buyBookButton: UIButton!
     
     @IBAction func buyBook() {
-        let alert = UIAlertController(title: "Oops!", message: "This function is not yet implemented, sorry!", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Okay, no worries!", style: .Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
-
+        let mailController = buildMailController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailController, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "This function is not yet implemented, sorry!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okay, no worries!", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func buildMailController() -> MFMailComposeViewController {
+        let mailController = MFMailComposeViewController()
+        mailController.mailComposeDelegate = self
+        mailController.setToRecipients([currentBook!.bookOwner.emailAddress])
+        mailController.setSubject("Request for \(currentBook!.bookTitle)")
+        mailController.setMessageBody("I'd love to read this book please!", isHTML: false)
+        return mailController
+    }
+    
+    /*conform to MFMailComposeViewControllerDelegate*/
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBOutlet weak var returnBookButton: UIButton!
     
-    var currentBook: Data.Book? {
+    var currentBook: Book? {
         didSet {
             setView()
         }
@@ -50,7 +68,7 @@ class BookViewController: UIViewController {
                 bookTitle.adjustsFontSizeToFitWidth = true
                 bookImage.contentMode = .ScaleAspectFit
                 bookTitle.text = currentBook.bookTitle
-                bookOwner.text = currentBook.bookOwner
+                bookOwner.text = currentBook.bookOwner.username
                 bookImage.image = UIImage(named: currentBook.bookImage)
                 returnBookButton.enabled = currentBook.bookOwned
                 if currentBook.bookFree {
