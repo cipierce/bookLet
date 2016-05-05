@@ -12,16 +12,19 @@ class PersonalUserViewController: UITableViewController {
     
     let model = generateData()
     var storedOffsets = [Int: CGFloat]()
+    var categories = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Personal User Table View Cell", forIndexPath: indexPath)
-        
         return cell
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return categories.count
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -33,8 +36,11 @@ class PersonalUserViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         guard let tableViewCell = cell as? PersonalUserTableViewCell else { return }
-        
         storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section]
     }
     
 }
