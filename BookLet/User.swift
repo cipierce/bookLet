@@ -11,6 +11,11 @@ import UIKit
 class User: NSObject {
     let username: String
     let emailAddress: String
+    let followers = [User]()
+    let favoriteBooks = [Book]()
+    let lentBooks = [Book]()
+    let borrowedBooks = [Book]()
+    let postedBooks = [Book]()
     
     init(username: String, emailAddress: String){
         self.username = username

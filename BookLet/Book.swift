@@ -14,11 +14,13 @@ class Book: NSObject {
     let bookImage: String
     let bookOwned: Bool
     let bookFree: Bool
+    let bookBorrower: User?
     init(title: String, owner: User, imagefname: String, bookOwned: Bool, bookFree: Bool){
         self.bookTitle = title
         self.bookOwner = owner
         self.bookImage = imagefname
         self.bookOwned = bookOwned
         self.bookFree = bookFree
+        self.bookBorrower = nil
     }
 }
