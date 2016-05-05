@@ -30,22 +30,35 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     @IBOutlet weak var buyBookButton: UIButton!
     
     @IBAction func buyBook() {
-        let mailController = buildMailController()
+        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress,
+            withSubjectLine: "Request for \(currentBook!.bookTitle)",
+            withBodyText: "I'd love to read this book please!")
+        sendToMail(mailController)
+    }
+    
+    @IBAction func returnBook() {
+        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress,
+            withSubjectLine: "Ready to return \(currentBook!.bookTitle)",
+            withBodyText: "I'm done with this book and would like to return it! Where should I drop it off?")
+        sendToMail(mailController)
+    }
+    
+    func sendToMail(mailController: MFMailComposeViewController) {
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailController, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Oops!", message: "This function is not yet implemented, sorry!", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Okay, no worries!", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Oops!", message: "Looks like we couldn't access your mailbox", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         }
     }
     
-    func buildMailController() -> MFMailComposeViewController {
+    func buildMailController(withRecipient recipient: String, withSubjectLine subject: String, withBodyText text: String) -> MFMailComposeViewController {
         let mailController = MFMailComposeViewController()
         mailController.mailComposeDelegate = self
-        mailController.setToRecipients([currentBook!.bookOwner.emailAddress])
-        mailController.setSubject("Request for \(currentBook!.bookTitle)")
-        mailController.setMessageBody("I'd love to read this book please!", isHTML: false)
+        mailController.setToRecipients([recipient])
+        mailController.setSubject(subject)
+        mailController.setMessageBody(text, isHTML: false)
         return mailController
     }
     

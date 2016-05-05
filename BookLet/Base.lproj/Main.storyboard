@@ -65,6 +65,9 @@
                                     <constraint firstAttribute="width" constant="104" id="fYk-oF-eBA"/>
                                 </constraints>
                                 <state key="normal" title="Return Book"/>
+                                <connections>
+                                    <action selector="returnBook" destination="WcZ-FR-NgI" eventType="touchUpInside" id="xjM-GV-TBd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tH1-lx-9Vs">
                                 <rect key="frame" x="20" y="392" width="72" height="30"/>
