@@ -10,9 +10,12 @@ import UIKit
 
 class PersonalUserViewController: UITableViewController {
     
+    let testData = Data()
     let model = generateData()
     var storedOffsets = [Int: CGFloat]()
-    var categories = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]
+    var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]
+    var categoriesForGenericUserPage = ["Favorite Books", "Posted Books"]
+    var generic = false
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -24,7 +27,8 @@ class PersonalUserViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categories.count
+        return generic ? categoriesForGenericUserPage.count : categoriesForPersonalUserPage.count
+//        return categories.count
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -40,6 +44,7 @@ class PersonalUserViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var categories = generic ? categoriesForGenericUserPage : categoriesForPersonalUserPage
         return categories[section]
     }
     

@@ -11,6 +11,8 @@ import MessageUI
 
 class BookViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
+    let testData = Data()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()

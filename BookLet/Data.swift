@@ -17,4 +17,6 @@ class Data {
         Book(title: "Alice in Wonderland", owner: gina, imagefname: "aliceInWonderland", bookOwned: true, bookFree: false),
         Book(title: "Green Eggs and Ham", owner: caroline, imagefname: "greenEggsAndHam", bookOwned: false, bookFree: true)
     ]
+    
+    let currentUser = gina
 }
