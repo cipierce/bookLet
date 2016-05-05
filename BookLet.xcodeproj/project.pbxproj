@@ -10,6 +10,9 @@
 		D55352331CD1897C00FDF089 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55352321CD1897C00FDF089 /* BookViewController.swift */; };
 		D557C8801CD927AE00EED351 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C87F1CD927AE00EED351 /* Book.swift */; };
 		D557C8821CD92C3400EED351 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C8811CD92C3400EED351 /* User.swift */; };
+		D557C8861CD9378000EED351 /* PersonalUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C8831CD9378000EED351 /* PersonalUserTableViewCell.swift */; };
+		D557C8871CD9378000EED351 /* PersonalUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C8841CD9378000EED351 /* PersonalUserViewController.swift */; };
+		D557C8881CD9378000EED351 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C8851CD9378000EED351 /* HelperMethods.swift */; };
 		D568A7AE1CD29F8C00DB3C53 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A7AD1CD29F8C00DB3C53 /* SearchTableViewController.swift */; };
 		D568A7B01CD2A06400DB3C53 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A7AF1CD2A06400DB3C53 /* SearchTableViewCell.swift */; };
 		D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383421CCEE0D20064A87D /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 		D55352321CD1897C00FDF089 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		D557C87F1CD927AE00EED351 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D557C8811CD92C3400EED351 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D557C8831CD9378000EED351 /* PersonalUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalUserTableViewCell.swift; sourceTree = "<group>"; };
+		D557C8841CD9378000EED351 /* PersonalUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalUserViewController.swift; sourceTree = "<group>"; };
+		D557C8851CD9378000EED351 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		D568A7AD1CD29F8C00DB3C53 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D568A7AF1CD2A06400DB3C53 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		D5A3833F1CCEE0D20064A87D /* BookLet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +123,9 @@
 				D568A7AD1CD29F8C00DB3C53 /* SearchTableViewController.swift */,
 				D55352321CD1897C00FDF089 /* BookViewController.swift */,
 				D557C8811CD92C3400EED351 /* User.swift */,
+				D557C8831CD9378000EED351 /* PersonalUserTableViewCell.swift */,
+				D557C8841CD9378000EED351 /* PersonalUserViewController.swift */,
+				D557C8851CD9378000EED351 /* HelperMethods.swift */,
 				D5A38FC51CCFF95B00B9B257 /* Data.swift */,
 				D557C87F1CD927AE00EED351 /* Book.swift */,
 				D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */,
@@ -279,10 +288,13 @@
 			files = (
 				D557C8801CD927AE00EED351 /* Book.swift in Sources */,
 				D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */,
+				D557C8881CD9378000EED351 /* HelperMethods.swift in Sources */,
+				D557C8871CD9378000EED351 /* PersonalUserViewController.swift in Sources */,
 				D568A7AE1CD29F8C00DB3C53 /* SearchTableViewController.swift in Sources */,
 				D5A38FC41CCFF68D00B9B257 /* FeedTableViewCell.swift in Sources */,
 				D55352331CD1897C00FDF089 /* BookViewController.swift in Sources */,
 				D557C8821CD92C3400EED351 /* User.swift in Sources */,
+				D557C8861CD9378000EED351 /* PersonalUserTableViewCell.swift in Sources */,
 				D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */,
 				D5A38FC61CCFF95B00B9B257 /* Data.swift in Sources */,
 				D568A7B01CD2A06400DB3C53 /* SearchTableViewCell.swift in Sources */,
