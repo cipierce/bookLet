@@ -15,9 +15,7 @@ class FeedTableViewController: UITableViewController {
         static let bookSegueIdentifier = "ShowBookSegue"
     }
 
-    var books = [Book]()
-    
-    let managedObjectContext = DataController().managedObjectContext
+    var data = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,68 +25,9 @@ class FeedTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-      
-        //FIXME: move once we have add user page
-        addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
-        if let user = fetchUser() {
-            addBook(title: "Alice in Wonderland", owner: user, imagefname: "aliceInWonderland", borrowed: true, free: false)
-            if let book = fetchBook() {
-                books.append(book)
-            }
-        }
         
     }
-    //FIXME: move later to central location
-    func addUser(username username: String, emailAddress: String) {
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as! User
-        entity.setValue(username, forKey: "username")
-        entity.setValue(emailAddress, forKey: "emailAddress")
-        do {
-            try managedObjectContext.save()
-        } catch {
-            fatalError("failed to save because: \(error)")
-        }
-    }
-    //FIXME: move later
-    func addBook(title title: String, owner: User, imagefname: String, borrowed: Bool, free: Bool) {
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
-        entity.setValue(title, forKey: "title")
-        entity.setValue(imagefname, forKey: "image")
-        entity.setValue(borrowed, forKey: "borrowed")
-        entity.setValue(free, forKey: "free")
-        entity.setValue(owner, forKey: "owner")
-        do {
-            try managedObjectContext.save()
-        } catch {
-            fatalError("failed to save because: \(error)")
-        }
-    }
     
-    //FIXME: move later to central location
-    func fetchUser() -> User? {
-        let userFetch = NSFetchRequest(entityName: "User")
-        do {
-            let fetchedUser = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
-            print(fetchedUser.first!.username!)
-            return fetchedUser.first!
-        } catch {
-            fatalError("failed to save because: \(error)")
-        }
-        return nil
-    }
-    //FIXME: move!
-    func fetchBook() -> Book? {
-        let bookFetch = NSFetchRequest(entityName: "Book")
-        do {
-            let fetchedBook = try managedObjectContext.executeFetchRequest(bookFetch) as! [Book]
-            print(fetchedBook.first!.title!)
-            return fetchedBook.first
-        } catch {
-            fatalError("failed to save because: \(error)")
-        }
-        return nil
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,13 +40,13 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        return data.books.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
-        let entry = books[indexPath.row]
+        let entry = data.books[indexPath.row]
         cell!.bookTitle.text = entry.title
         cell!.bookOwnerUsername.text = entry.owner!.username
         cell!.bookIcon.contentMode = .ScaleAspectFit
@@ -160,7 +99,7 @@ class FeedTableViewController: UITableViewController {
         if segue.identifier == StringConstants.bookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {
                 if let bookIndex = tableView.indexPathForSelectedRow {
-                    destination.currentBook = books[bookIndex.row]
+                    destination.currentBook = data.books[bookIndex.row]
                 }
             }
         }
