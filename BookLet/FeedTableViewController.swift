@@ -30,7 +30,13 @@ class FeedTableViewController: UITableViewController {
       
         //FIXME: move once we have add user page
         addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
-        fetch()
+        if let user = fetchUser() {
+            addBook(title: "Alice in Wonderland", owner: user, imagefname: "aliceInWonderland", borrowed: true, free: false)
+            if let book = fetchBook() {
+                books.append(book)
+            }
+        }
+        
     }
     //FIXME: move later to central location
     func addUser(username username: String, emailAddress: String) {
@@ -43,18 +49,44 @@ class FeedTableViewController: UITableViewController {
             fatalError("failed to save because: \(error)")
         }
     }
+    //FIXME: move later
+    func addBook(title title: String, owner: User, imagefname: String, borrowed: Bool, free: Bool) {
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
+        entity.setValue(title, forKey: "title")
+        entity.setValue(imagefname, forKey: "image")
+        entity.setValue(borrowed, forKey: "borrowed")
+        entity.setValue(free, forKey: "free")
+        entity.setValue(owner, forKey: "owner")
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("failed to save because: \(error)")
+        }
+    }
+    
     //FIXME: move later to central location
-    func fetch() {
+    func fetchUser() -> User? {
         let userFetch = NSFetchRequest(entityName: "User")
         do {
             let fetchedUser = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
             print(fetchedUser.first!.username!)
-            books = [Book(title: "Alice in Wonderland", owner: fetchedUser.first!, imagefname: "aliceInWonderland", bookOwned: true, bookFree: false),
-                    Book(title: "Green Eggs and Ham", owner: fetchedUser.first!, imagefname: "greenEggsAndHam", bookOwned: false, bookFree: true)
-                ]
+            return fetchedUser.first!
         } catch {
             fatalError("failed to save because: \(error)")
         }
+        return nil
+    }
+    //FIXME: move!
+    func fetchBook() -> Book? {
+        let bookFetch = NSFetchRequest(entityName: "Book")
+        do {
+            let fetchedBook = try managedObjectContext.executeFetchRequest(bookFetch) as! [Book]
+            print(fetchedBook.first!.title!)
+            return fetchedBook.first
+        } catch {
+            fatalError("failed to save because: \(error)")
+        }
+        return nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,10 +108,10 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
         let entry = books[indexPath.row]
-        cell!.bookTitle.text = entry.bookTitle
-        cell!.bookOwnerUsername.text = entry.bookOwner.username
+        cell!.bookTitle.text = entry.title
+        cell!.bookOwnerUsername.text = entry.owner!.username
         cell!.bookIcon.contentMode = .ScaleAspectFit
-        cell!.bookIcon.image = UIImage(named: entry.bookImage)
+        cell!.bookIcon.image = UIImage(named: entry.image!)
         return cell!
         //FIXME: needs error handling
     }

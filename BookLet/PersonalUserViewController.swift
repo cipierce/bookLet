@@ -10,7 +10,6 @@ import UIKit
 
 class PersonalUserViewController: UITableViewController {
     
-    let testData = Data()
     let model = generateData()
     var storedOffsets = [Int: CGFloat]()
     var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]

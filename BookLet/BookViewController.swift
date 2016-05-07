@@ -11,8 +11,6 @@ import MessageUI
 
 class BookViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    let testData = Data()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -32,15 +30,15 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     @IBOutlet weak var buyBookButton: UIButton!
     
     @IBAction func buyBook() {
-        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress!,
-            withSubjectLine: "Request for \(currentBook!.bookTitle)",
+        let mailController = buildMailController(withRecipient: currentBook!.owner!.emailAddress!,
+            withSubjectLine: "Request for \(currentBook!.title)",
             withBodyText: "I'd love to read this book please!")
         sendToMail(mailController)
     }
     
     @IBAction func returnBook() {
-        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress!,
-            withSubjectLine: "Ready to return \(currentBook!.bookTitle)",
+        let mailController = buildMailController(withRecipient: currentBook!.owner!.emailAddress!,
+            withSubjectLine: "Ready to return \(currentBook!.title)",
             withBodyText: "I'm done with this book and would like to return it! Where should I drop it off?")
         sendToMail(mailController)
     }
@@ -82,11 +80,11 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
             if let bookTitle = bookTitle { //FIXME: is this line necessary?
                 bookTitle.adjustsFontSizeToFitWidth = true
                 bookImage.contentMode = .ScaleAspectFit
-                bookTitle.text = currentBook.bookTitle
-                bookOwner.text = currentBook.bookOwner.username
-                bookImage.image = UIImage(named: currentBook.bookImage)
-                returnBookButton.enabled = currentBook.bookOwned
-                if currentBook.bookFree {
+                bookTitle.text = currentBook.title
+                bookOwner.text = currentBook.owner!.username
+                bookImage.image = UIImage(named: currentBook.image!)
+                returnBookButton.enabled = currentBook.borrowed
+                if currentBook.free {
                     buyBookButton.setTitle("Borrow book", forState: .Normal)
                 }
             }
