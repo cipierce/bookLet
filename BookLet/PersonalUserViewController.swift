@@ -16,6 +16,27 @@ class PersonalUserViewController: UITableViewController {
     var categoriesForGenericUserPage = ["Favorite Books", "Posted Books"]
     var generic = false
     
+    @IBOutlet weak var userLabel: UILabel!
+    
+    var currentUser: User? {
+        didSet {
+            setView()
+        }
+    }
+    
+    func setView() {
+        if let currentUser = currentUser {
+            if let userLabel = userLabel {
+                userLabel.text = currentUser.username
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setView()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

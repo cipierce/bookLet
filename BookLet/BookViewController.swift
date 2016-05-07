@@ -16,6 +16,10 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
         setView()
     }
 
+    struct StringConstants {
+        static let userSegueIdentifier = "ShowUserSegue"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -23,7 +27,7 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     @IBOutlet weak var bookTitle: UILabel!
 
-    @IBOutlet weak var bookOwner: UILabel!
+    @IBOutlet weak var bookOwner: UIButton!
     
     @IBOutlet weak var bookImage: UIImageView!
     
@@ -31,7 +35,7 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     @IBAction func buyBook() {
         let mailController = buildMailController(withRecipient: currentBook!.owner!.emailAddress!,
-            withSubjectLine: "Request for \(currentBook!.title)",
+            withSubjectLine: "Request for \(currentBook!.title!)",
             withBodyText: "I'd love to read this book please!")
         sendToMail(mailController)
     }
@@ -81,7 +85,7 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
                 bookTitle.adjustsFontSizeToFitWidth = true
                 bookImage.contentMode = .ScaleAspectFit
                 bookTitle.text = currentBook.title
-                bookOwner.text = currentBook.owner!.username
+                bookOwner.setTitle(currentBook.owner!.username, forState: .Normal)
                 bookImage.image = UIImage(named: currentBook.image!)
                 returnBookButton.enabled = currentBook.borrowed
                 if currentBook.free {
@@ -92,14 +96,16 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
 
     }
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == StringConstants.userSegueIdentifier {
+            if let destination = segue.destinationViewController as? PersonalUserViewController {
+                    destination.currentUser = currentBook!.owner!
+            }
+        }
     }
-    */
+
 
 }
