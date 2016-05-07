@@ -14,7 +14,12 @@ import CoreData
 
 extension User {
 
-    @NSManaged var username: String?
     @NSManaged var emailAddress: String?
+    @NSManaged var username: String?
+    @NSManaged var borrowedBooks: NSSet?
+    @NSManaged var postedBooks: NSSet?
+    @NSManaged var favoriteBooks: NSSet?
+    @NSManaged var followers: NSSet?
+    @NSManaged var following: NSSet?
 
 }

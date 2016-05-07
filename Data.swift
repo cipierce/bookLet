@@ -46,6 +46,14 @@ class Data {
         entity.setValue(borrowed, forKey: "borrowed")
         entity.setValue(free, forKey: "free")
         entity.setValue(owner, forKey: "owner")
+        //FIXME: unique id hack
+        var idNumber = 0
+        if let lastBook = fetchBook() {
+            if let lastBookId = lastBook.id {
+                idNumber = Int(lastBookId)! + 1
+            }
+        }
+        entity.setValue("\(idNumber)", forKey: "id")
         do {
             try managedObjectContext.save()
         } catch {
@@ -57,7 +65,6 @@ class Data {
         let userFetch = NSFetchRequest(entityName: "User")
         do {
             let fetchedUser = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
-            print("there are \(fetchedUser.count) users")
             return fetchedUser.first!
         } catch {
             fatalError("failed to save because: \(error)")
@@ -69,8 +76,7 @@ class Data {
         let bookFetch = NSFetchRequest(entityName: "Book")
         do {
             let fetchedBook = try managedObjectContext.executeFetchRequest(bookFetch) as! [Book]
-            print("there are \(fetchedBook.count) books")
-            return fetchedBook.first
+            return fetchedBook.last
         } catch {
             fatalError("failed to save because: \(error)")
         }
