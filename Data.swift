@@ -20,12 +20,34 @@ class Data {
     init(){
         managedObjectContext.mergePolicy = NSRollbackMergePolicy // change later
         addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
-        if let user = fetchUser() {
+        addUser(username: "caroline", emailAddress: "cpierce@bowdoin.edu")
+        users = fetchAllUsers()
+        if let user = findUserInArrayWithUsername("gina", users: users) {
             addBook(title: "Alice in Wonderland", owner: user, imagefname: "aliceInWonderland", borrowed: true, free: false)
-            if let book = fetchBook() {
-                books.append(book)
-            }
         }
+        if let user = findUserInArrayWithUsername("caroline", users: users) {
+            addBook(title: "Green Eggs And Ham", owner: user, imagefname: "greenEggsAndHam", borrowed: false, free: true)
+        }
+        books = fetchAllBooks()
+        print("\(books.count) books and \(users.count) users")
+    }
+    
+    func fetchPostedBooksForUser(username username: String) -> [Book] {
+        var returnBooks = [Book]()
+        let userFetch = NSFetchRequest(entityName: "User")
+        do {
+            let fetchedUsers = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
+            if let testUser = findUserInArrayWithUsername(username, users: fetchedUsers) {
+                if let books = testUser.postedBooks {
+                    for book in books {
+                        returnBooks.append(book as! Book)
+                    }
+                }
+            }
+        } catch {
+            fatalError("failed to save because: \(error)")
+        }
+        return returnBooks
     }
     
     func addUser(username username: String, emailAddress: String) {
@@ -40,6 +62,7 @@ class Data {
     }
 
     func addBook(title title: String, owner: User, imagefname: String, borrowed: Bool, free: Bool) {
+        print("add book with title: \(title)")
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
         entity.setValue(title, forKey: "title")
         entity.setValue(imagefname, forKey: "image")
@@ -48,7 +71,7 @@ class Data {
         entity.setValue(owner, forKey: "owner")
         //FIXME: unique id hack
         var idNumber = 0
-        if let lastBook = fetchBook() {
+        if let lastBook = fetchAllBooks().last {
             if let lastBookId = lastBook.id {
                 idNumber = Int(lastBookId)! + 1
             }
@@ -61,24 +84,33 @@ class Data {
         }
     }
     
-    func fetchUser() -> User? {
+    func fetchAllUsers() -> [User] {
         let userFetch = NSFetchRequest(entityName: "User")
         do {
-            let fetchedUser = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
-            return fetchedUser.first!
+            let fetchedUsers = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
+            return fetchedUsers
         } catch {
             fatalError("failed to save because: \(error)")
         }
-        return nil
+        return []
     }
 
-    func fetchBook() -> Book? {
+    func fetchAllBooks() -> [Book] {
         let bookFetch = NSFetchRequest(entityName: "Book")
         do {
-            let fetchedBook = try managedObjectContext.executeFetchRequest(bookFetch) as! [Book]
-            return fetchedBook.last
+            let fetchedBooks = try managedObjectContext.executeFetchRequest(bookFetch) as! [Book]
+            return fetchedBooks
         } catch {
             fatalError("failed to save because: \(error)")
+        }
+        return []
+    }
+    
+    func findUserInArrayWithUsername(username: String, users: [User]) -> User? {
+        for user in users {
+            if user.username == username {
+                return user
+            }
         }
         return nil
     }
