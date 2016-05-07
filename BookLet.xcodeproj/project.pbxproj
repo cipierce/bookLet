@@ -24,6 +24,7 @@
 		D5A383631CCEE0D20064A87D /* BookLetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383621CCEE0D20064A87D /* BookLetUITests.swift */; };
 		D5A383711CCEE9950064A87D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383701CCEE9950064A87D /* FeedTableViewController.swift */; };
 		D5A38FC41CCFF68D00B9B257 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */; };
+		D5B7402C1CDEB1B100F6DD63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B7402B1CDEB1B100F6DD63 /* LoginViewController.swift */; };
 		D5D62EE31CDE35A40015C1CC /* coreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5D62EE11CDE35A40015C1CC /* coreDataModel.xcdatamodeld */; };
 		D5D62EE91CDE36D30015C1CC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62EE81CDE36D30015C1CC /* DataController.swift */; };
 		D5D62EEC1CDE37F90015C1CC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D62EEA1CDE37F90015C1CC /* User+CoreDataProperties.swift */; };
@@ -71,6 +72,7 @@
 		D5A383641CCEE0D20064A87D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5A383701CCEE9950064A87D /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		D5A38FC31CCFF68D00B9B257 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		D5B7402B1CDEB1B100F6DD63 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5D62EE21CDE35A40015C1CC /* coreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D5D62EE81CDE36D30015C1CC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = ../DataController.swift; sourceTree = "<group>"; };
 		D5D62EEA1CDE37F90015C1CC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				D51F79481CDE4DAB00A22F97 /* Data.swift */,
 				D5A383421CCEE0D20064A87D /* AppDelegate.swift */,
 				D5A383461CCEE0D20064A87D /* Main.storyboard */,
+				D5B7402B1CDEB1B100F6DD63 /* LoginViewController.swift */,
 				D51F79421CDE47C300A22F97 /* Book+CoreDataProperties.swift */,
 				D51F79431CDE47C300A22F97 /* Book.swift */,
 				D5D62EEA1CDE37F90015C1CC /* User+CoreDataProperties.swift */,
@@ -311,6 +314,7 @@
 				D5D62EE31CDE35A40015C1CC /* coreDataModel.xcdatamodeld in Sources */,
 				D5D62EE91CDE36D30015C1CC /* DataController.swift in Sources */,
 				D51F79441CDE47C300A22F97 /* Book+CoreDataProperties.swift in Sources */,
+				D5B7402C1CDEB1B100F6DD63 /* LoginViewController.swift in Sources */,
 				D568A7B01CD2A06400DB3C53 /* SearchTableViewCell.swift in Sources */,
 				D51F79451CDE47C300A22F97 /* Book.swift in Sources */,
 				D51F79491CDE4DAB00A22F97 /* Data.swift in Sources */,

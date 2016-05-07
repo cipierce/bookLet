@@ -18,9 +18,8 @@ class Data {
     let managedObjectContext = DataController().managedObjectContext
     
     init(){
-        managedObjectContext.mergePolicy = NSRollbackMergePolicy // change later
-        addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
-        addUser(username: "caroline", emailAddress: "cpierce@bowdoin.edu")
+//        addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
+//        addUser(username: "caroline", emailAddress: "cpierce@bowdoin.edu")
         users = fetchAllUsers()
         if let user = findUserInArrayWithUsername("gina", users: users) {
             addBook(title: "Alice in Wonderland", owner: user, imagefname: "aliceInWonderland", borrowed: true, free: false)
@@ -50,15 +49,16 @@ class Data {
         return returnBooks
     }
     
-    func addUser(username username: String, emailAddress: String) {
+    func addUser(username username: String, emailAddress: String) -> String? {
         let entity = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as! User
         entity.setValue(username, forKey: "username")
         entity.setValue(emailAddress, forKey: "emailAddress")
         do {
             try managedObjectContext.save()
         } catch {
-            fatalError("failed to save because: \(error)")
+            return "Username already in use.  Please try a different username."
         }
+        return nil
     }
 
     func addBook(title title: String, owner: User, imagefname: String, borrowed: Bool, free: Bool) {
