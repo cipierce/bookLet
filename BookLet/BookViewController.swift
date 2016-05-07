@@ -32,14 +32,14 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     @IBOutlet weak var buyBookButton: UIButton!
     
     @IBAction func buyBook() {
-        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress,
+        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress!,
             withSubjectLine: "Request for \(currentBook!.bookTitle)",
             withBodyText: "I'd love to read this book please!")
         sendToMail(mailController)
     }
     
     @IBAction func returnBook() {
-        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress,
+        let mailController = buildMailController(withRecipient: currentBook!.bookOwner.emailAddress!,
             withSubjectLine: "Ready to return \(currentBook!.bookTitle)",
             withBodyText: "I'm done with this book and would like to return it! Where should I drop it off?")
         sendToMail(mailController)

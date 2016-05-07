@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FeedTableViewController: UITableViewController {
     
@@ -14,7 +15,9 @@ class FeedTableViewController: UITableViewController {
         static let bookSegueIdentifier = "ShowBookSegue"
     }
 
-    let testData = Data()
+    var books = [Book]()
+    
+    let managedObjectContext = DataController().managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,34 @@ class FeedTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+      
+        //FIXME: move once we have add user page
+        addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
+        fetch()
+    }
+    //FIXME: move later to central location
+    func addUser(username username: String, emailAddress: String) {
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as! User
+        entity.setValue(username, forKey: "username")
+        entity.setValue(emailAddress, forKey: "emailAddress")
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("failed to save because: \(error)")
+        }
+    }
+    //FIXME: move later to central location
+    func fetch() {
+        let userFetch = NSFetchRequest(entityName: "User")
+        do {
+            let fetchedUser = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
+            print(fetchedUser.first!.username!)
+            books = [Book(title: "Alice in Wonderland", owner: fetchedUser.first!, imagefname: "aliceInWonderland", bookOwned: true, bookFree: false),
+                    Book(title: "Green Eggs and Ham", owner: fetchedUser.first!, imagefname: "greenEggsAndHam", bookOwned: false, bookFree: true)
+                ]
+        } catch {
+            fatalError("failed to save because: \(error)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,13 +69,13 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testData.testBooks.count
+        return books.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
-        let entry = testData.testBooks[indexPath.row]
+        let entry = books[indexPath.row]
         cell!.bookTitle.text = entry.bookTitle
         cell!.bookOwnerUsername.text = entry.bookOwner.username
         cell!.bookIcon.contentMode = .ScaleAspectFit
@@ -97,7 +128,7 @@ class FeedTableViewController: UITableViewController {
         if segue.identifier == StringConstants.bookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {
                 if let bookIndex = tableView.indexPathForSelectedRow {
-                    destination.currentBook = testData.testBooks[bookIndex.row]
+                    destination.currentBook = books[bookIndex.row]
                 }
             }
         }
