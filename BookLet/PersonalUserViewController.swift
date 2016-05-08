@@ -26,13 +26,13 @@ class PersonalUserViewController: UITableViewController {
         if userForPage == nil {
             userForPage = delegate.currentUser
         }
-//        if let user = userForPage {
+        if let userForPage = userForPage {
             if let userLabel = userLabel {
-                userLabel.text = userForPage!.username
+                userLabel.text = userForPage.username
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                generic = (userForPage!.username != delegate.currentUser?.username)
+                generic = (userForPage.username != delegate.currentUser?.username)
             }
-//        }
+        }
     }
     
     override func viewDidLoad() {
@@ -51,7 +51,6 @@ class PersonalUserViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return generic ? categoriesForGenericUserPage.count : categoriesForPersonalUserPage.count
-//        return categories.count
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

@@ -12,24 +12,7 @@ import CoreData
 /*this class is a hack for fetching and save test data*/
 class Data {
     
-    var books = [Book]()
-    var users = [User]()
-    
     let managedObjectContext = DataController().managedObjectContext
-    
-    init(){
-//        addUser(username: "gina", emailAddress: "gstalica@bowdoin.edu")
-//        addUser(username: "caroline", emailAddress: "cpierce@bowdoin.edu")
-        users = fetchAllUsers()
-        if let user = findUserInArrayWithUsername("gina", users: users) {
-            addBook(title: "Alice in Wonderland", owner: user, imagefname: "aliceInWonderland", borrowed: true, free: false)
-        }
-        if let user = findUserInArrayWithUsername("caroline", users: users) {
-            addBook(title: "Green Eggs And Ham", owner: user, imagefname: "greenEggsAndHam", borrowed: false, free: true)
-        }
-        books = fetchAllBooks()
-        print("\(books.count) books and \(users.count) users")
-    }
     
     func fetchPostedBooksForUser(username username: String) -> [Book] {
         var returnBooks = [Book]()
@@ -61,14 +44,14 @@ class Data {
         return nil
     }
 
-    func addBook(title title: String, owner: User, imagefname: String, borrowed: Bool, free: Bool) {
+    func addBook(title title: String, owner: String, imagefname: String, borrowed: Bool, free: Bool) -> String? {
         print("add book with title: \(title)")
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
         entity.setValue(title, forKey: "title")
         entity.setValue(imagefname, forKey: "image")
         entity.setValue(borrowed, forKey: "borrowed")
         entity.setValue(free, forKey: "free")
-        entity.setValue(owner, forKey: "owner")
+        entity.setValue(fetchUserWithUsername(owner), forKey: "owner")
         //FIXME: unique id hack
         var idNumber = 0
         if let lastBook = fetchAllBooks().last {
@@ -80,8 +63,9 @@ class Data {
         do {
             try managedObjectContext.save()
         } catch {
-            print("failed to save because: \(error)")
+            return "Error saving book"
         }
+        return nil
     }
     
     func fetchAllUsers() -> [User] {

@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailAddressField: UITextField!
     
     //FIXME: call this at some point
-    func setView() {
+    func fixTextFields() {
         usernameField.autocapitalizationType = .None
         usernameField.autocorrectionType = .No
         emailAddressField.autocorrectionType = .No
@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
                         if asNewUser {
                             if let error = data.addUser(username: username, emailAddress: emailAddress) {
                                 alertText = error
+                            } else {
+                                return
                             }
                         } else {
                             if let returningUser = data.fetchUserWithUsername(username) {
@@ -69,6 +71,11 @@ class LoginViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fixTextFields()
+    }
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

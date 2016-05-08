@@ -40,13 +40,13 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.books.count
+        return data.fetchAllBooks().count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
-        let entry = data.books[indexPath.row]
+        let entry = data.fetchAllBooks()[indexPath.row]
         cell!.bookTitle.text = entry.title
         cell!.bookOwnerUsername.text = entry.owner!.username
         cell!.bookIcon.contentMode = .ScaleAspectFit
@@ -99,7 +99,7 @@ class FeedTableViewController: UITableViewController {
         if segue.identifier == StringConstants.bookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {
                 if let bookIndex = tableView.indexPathForSelectedRow {
-                    destination.currentBook = data.books[bookIndex.row]
+                    destination.currentBook = data.fetchAllBooks()[bookIndex.row]
                 }
             }
         }

@@ -16,6 +16,7 @@
 		D557C8881CD9378000EED351 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557C8851CD9378000EED351 /* HelperMethods.swift */; };
 		D568A7AE1CD29F8C00DB3C53 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A7AD1CD29F8C00DB3C53 /* SearchTableViewController.swift */; };
 		D568A7B01CD2A06400DB3C53 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A7AF1CD2A06400DB3C53 /* SearchTableViewCell.swift */; };
+		D58577891CDFD05700E0D324 /* NewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58577881CDFD05700E0D324 /* NewBookViewController.swift */; };
 		D5A383431CCEE0D20064A87D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A383421CCEE0D20064A87D /* AppDelegate.swift */; };
 		D5A383481CCEE0D20064A87D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A383461CCEE0D20064A87D /* Main.storyboard */; };
 		D5A3834A1CCEE0D20064A87D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A383491CCEE0D20064A87D /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		D557C8851CD9378000EED351 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		D568A7AD1CD29F8C00DB3C53 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D568A7AF1CD2A06400DB3C53 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D58577881CDFD05700E0D324 /* NewBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBookViewController.swift; sourceTree = "<group>"; };
 		D5A3833F1CCEE0D20064A87D /* BookLet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A383421CCEE0D20064A87D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5A383471CCEE0D20064A87D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				D51F79481CDE4DAB00A22F97 /* Data.swift */,
 				D5A383421CCEE0D20064A87D /* AppDelegate.swift */,
 				D5A383461CCEE0D20064A87D /* Main.storyboard */,
+				D58577881CDFD05700E0D324 /* NewBookViewController.swift */,
 				D5B7402B1CDEB1B100F6DD63 /* LoginViewController.swift */,
 				D51F79421CDE47C300A22F97 /* Book+CoreDataProperties.swift */,
 				D51F79431CDE47C300A22F97 /* Book.swift */,
@@ -305,6 +308,7 @@
 				D557C8881CD9378000EED351 /* HelperMethods.swift in Sources */,
 				D557C8871CD9378000EED351 /* PersonalUserViewController.swift in Sources */,
 				D5D62EED1CDE37F90015C1CC /* User.swift in Sources */,
+				D58577891CDFD05700E0D324 /* NewBookViewController.swift in Sources */,
 				D568A7AE1CD29F8C00DB3C53 /* SearchTableViewController.swift in Sources */,
 				D5A38FC41CCFF68D00B9B257 /* FeedTableViewCell.swift in Sources */,
 				D55352331CD1897C00FDF089 /* BookViewController.swift in Sources */,
