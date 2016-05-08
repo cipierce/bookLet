@@ -80,7 +80,7 @@ class Data {
         do {
             try managedObjectContext.save()
         } catch {
-            fatalError("failed to save because: \(error)")
+            print("failed to save because: \(error)")
         }
     }
     
@@ -93,6 +93,10 @@ class Data {
             fatalError("failed to save because: \(error)")
         }
         return []
+    }
+    
+    func fetchUserWithUsername(username: String) -> User? {
+        return findUserInArrayWithUsername(username, users: fetchAllUsers())
     }
 
     func fetchAllBooks() -> [Book] {

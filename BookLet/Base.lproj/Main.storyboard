@@ -140,11 +140,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-WH-BN3">
                                 <rect key="frame" x="20" y="344" width="560" height="30"/>
                                 <color key="backgroundColor" red="0.19730516551213562" green="0.50233145381514932" blue="0.77223405934343436" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Login as New User">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="login:" destination="bwJ-fu-GUY" eventType="touchUpInside" id="7qV-9n-abK"/>
+                                    <action selector="loginAsNew" destination="bwJ-fu-GUY" eventType="touchUpInside" id="cyz-eN-gOq"/>
                                     <segue destination="99b-RP-d3O" kind="show" identifier="LoginSegue" id="Cyk-2o-rLR"/>
                                 </connections>
                             </button>
@@ -167,31 +167,45 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmS-xz-faJ">
                                 <rect key="frame" x="34" y="209" width="265" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="265" id="h3v-lx-NNv"/>
+                                    <constraint firstAttribute="width" constant="265" id="LTC-BI-gfX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yix-jG-bJn">
+                                <rect key="frame" x="20" y="382" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.19730516549999999" green="0.50233145379999999" blue="0.7722340593" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login as Existing User">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAsExisting:" destination="bwJ-fu-GUY" eventType="touchUpInside" id="vMY-Wf-kdp"/>
+                                    <segue destination="99b-RP-d3O" kind="show" identifier="LoginSegue" id="0fV-oU-7YQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DmS-xz-faJ" firstAttribute="leading" secondItem="haY-jl-ca5" secondAttribute="leading" id="0JK-QO-Dup"/>
-                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="trailing" secondItem="CQk-qH-vEu" secondAttribute="trailingMargin" id="6AF-5R-Pdz"/>
-                            <constraint firstItem="DmS-xz-faJ" firstAttribute="leading" secondItem="CQk-qH-vEu" secondAttribute="leadingMargin" constant="14" id="BdO-Zc-Ghf"/>
-                            <constraint firstItem="NTR-lS-eIv" firstAttribute="top" secondItem="DmS-xz-faJ" secondAttribute="top" id="RdF-xc-vw4"/>
-                            <constraint firstItem="haY-jl-ca5" firstAttribute="top" secondItem="DmS-xz-faJ" secondAttribute="bottom" constant="39" id="abZ-sw-syG"/>
-                            <constraint firstItem="NTR-lS-eIv" firstAttribute="leading" secondItem="Yvm-gb-x9T" secondAttribute="leading" id="aq7-yL-6e1"/>
-                            <constraint firstItem="NTR-lS-eIv" firstAttribute="bottom" secondItem="DmS-xz-faJ" secondAttribute="bottom" id="c14-mA-M7k"/>
-                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="leading" secondItem="haY-jl-ca5" secondAttribute="trailing" constant="8" symbolic="YES" id="dOy-BX-4kq"/>
-                            <constraint firstItem="DmS-xz-faJ" firstAttribute="top" secondItem="F3p-kn-efk" secondAttribute="bottom" constant="189" id="dqx-yQ-0kQ"/>
-                            <constraint firstItem="mcK-WH-BN3" firstAttribute="leading" secondItem="CQk-qH-vEu" secondAttribute="leadingMargin" id="m4V-Nv-vVW"/>
-                            <constraint firstItem="mcK-WH-BN3" firstAttribute="top" secondItem="haY-jl-ca5" secondAttribute="bottom" constant="36" id="p4E-cF-O3t"/>
-                            <constraint firstItem="NTR-lS-eIv" firstAttribute="trailing" secondItem="Yvm-gb-x9T" secondAttribute="trailing" id="sLd-O1-Xey"/>
-                            <constraint firstItem="haY-jl-ca5" firstAttribute="top" secondItem="Yvm-gb-x9T" secondAttribute="top" id="sdm-Ru-Cep"/>
-                            <constraint firstItem="NTR-lS-eIv" firstAttribute="leading" secondItem="DmS-xz-faJ" secondAttribute="trailing" constant="8" symbolic="YES" id="uHT-tQ-qA2"/>
-                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="bottom" secondItem="haY-jl-ca5" secondAttribute="bottom" id="xW0-8G-tWN"/>
-                            <constraint firstItem="mcK-WH-BN3" firstAttribute="trailing" secondItem="Yvm-gb-x9T" secondAttribute="trailing" id="yaJ-mC-CTM"/>
+                            <constraint firstItem="mcK-WH-BN3" firstAttribute="leading" secondItem="yix-jG-bJn" secondAttribute="leading" id="170-QR-lqc"/>
+                            <constraint firstItem="mcK-WH-BN3" firstAttribute="trailing" secondItem="Yvm-gb-x9T" secondAttribute="trailing" id="2La-Y5-aoK"/>
+                            <constraint firstItem="yix-jG-bJn" firstAttribute="top" secondItem="mcK-WH-BN3" secondAttribute="bottom" constant="8" symbolic="YES" id="2yA-Ls-dRS"/>
+                            <constraint firstItem="NTR-lS-eIv" firstAttribute="bottom" secondItem="DmS-xz-faJ" secondAttribute="bottom" id="Dva-aE-QiC"/>
+                            <constraint firstItem="NTR-lS-eIv" firstAttribute="trailing" secondItem="CQk-qH-vEu" secondAttribute="trailingMargin" id="F6d-aE-cON"/>
+                            <constraint firstItem="Z30-4g-11Z" firstAttribute="top" secondItem="yix-jG-bJn" secondAttribute="bottom" constant="188" id="WhH-Vq-mlV"/>
+                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="top" secondItem="haY-jl-ca5" secondAttribute="top" id="jkP-9O-5aV"/>
+                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="leading" secondItem="haY-jl-ca5" secondAttribute="trailing" constant="8" symbolic="YES" id="jwi-va-GJ2"/>
+                            <constraint firstItem="haY-jl-ca5" firstAttribute="top" secondItem="DmS-xz-faJ" secondAttribute="bottom" constant="39" id="moA-9O-tmV"/>
+                            <constraint firstItem="mcK-WH-BN3" firstAttribute="leading" secondItem="CQk-qH-vEu" secondAttribute="leadingMargin" id="nw6-S0-DC8"/>
+                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="trailing" secondItem="NTR-lS-eIv" secondAttribute="trailing" id="oPz-bP-cci"/>
+                            <constraint firstItem="DmS-xz-faJ" firstAttribute="top" secondItem="NTR-lS-eIv" secondAttribute="top" id="oWh-Gb-Gc2"/>
+                            <constraint firstItem="mcK-WH-BN3" firstAttribute="top" secondItem="haY-jl-ca5" secondAttribute="bottom" constant="36" id="rsz-sA-CRh"/>
+                            <constraint firstItem="DmS-xz-faJ" firstAttribute="leading" secondItem="CQk-qH-vEu" secondAttribute="leadingMargin" constant="14" id="snG-Ma-4f1"/>
+                            <constraint firstItem="mcK-WH-BN3" firstAttribute="trailing" secondItem="yix-jG-bJn" secondAttribute="trailing" id="uLF-KS-k8l"/>
+                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="bottom" secondItem="haY-jl-ca5" secondAttribute="bottom" id="uez-Wz-F25"/>
+                            <constraint firstItem="Yvm-gb-x9T" firstAttribute="leading" secondItem="NTR-lS-eIv" secondAttribute="leading" id="wfa-fR-Fo3"/>
+                            <constraint firstItem="NTR-lS-eIv" firstAttribute="leading" secondItem="DmS-xz-faJ" secondAttribute="trailing" constant="8" symbolic="YES" id="xBb-L0-X9B"/>
+                            <constraint firstItem="DmS-xz-faJ" firstAttribute="leading" secondItem="haY-jl-ca5" secondAttribute="leading" id="xK0-og-1eY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -529,6 +543,7 @@
         <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0fV-oU-7YQ"/>
         <segue reference="zyl-II-cKk"/>
         <segue reference="CO3-HV-IUR"/>
     </inferredMetricsTieBreakers>

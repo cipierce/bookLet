@@ -14,22 +14,25 @@ class PersonalUserViewController: UITableViewController {
     var storedOffsets = [Int: CGFloat]()
     var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]
     var categoriesForGenericUserPage = ["Favorite Books", "Posted Books"]
+    
     var generic = false
     
     @IBOutlet weak var userLabel: UILabel!
     
-    var currentUser: User? {
-        didSet {
-            setView()
-        }
-    }
+    var userForPage: User?
     
     func setView() {
-        if let currentUser = currentUser {
-            if let userLabel = userLabel {
-                userLabel.text = currentUser.username
-            }
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if userForPage == nil {
+            userForPage = delegate.currentUser
         }
+//        if let user = userForPage {
+            if let userLabel = userLabel {
+                userLabel.text = userForPage!.username
+                let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                generic = (userForPage!.username != delegate.currentUser?.username)
+            }
+//        }
     }
     
     override func viewDidLoad() {

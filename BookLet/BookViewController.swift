@@ -102,7 +102,7 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.userSegueIdentifier {
             if let destination = segue.destinationViewController as? PersonalUserViewController {
-                    destination.currentUser = currentBook!.owner!
+                    destination.userForPage = currentBook!.owner!
             }
         }
     }
