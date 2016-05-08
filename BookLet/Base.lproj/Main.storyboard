@@ -19,11 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-me-c56">
-                                <rect key="frame" x="20" y="288" width="560" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="8qp-hy-wrI"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-me-c56">
+                                <rect key="frame" x="20" y="180" width="560" height="34"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Book Title">
                                         <attributes>
@@ -34,59 +31,32 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdD-rm-U2G">
-                                <rect key="frame" x="20" y="392" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.19730516549999999" green="0.50233145379999999" blue="0.7722340593" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Buy Book">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdD-rm-U2G">
+                                <rect key="frame" x="20" y="266" width="560" height="30"/>
+                                <state key="normal" title="Buy Book"/>
                                 <connections>
                                     <action selector="buyBook" destination="WcZ-FR-NgI" eventType="touchUpInside" id="Nom-9c-cNS"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-63-qjf">
-                                <rect key="frame" x="20" y="72" width="560" height="208"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-63-qjf">
+                                <rect key="frame" x="20" y="72" width="560" height="100"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KK-c9g">
-                                <rect key="frame" x="20" y="336" width="560" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Jtv-Bh-5AA"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KK-c9g">
+                                <rect key="frame" x="20" y="222" width="560" height="36"/>
                                 <state key="normal" title="Username"/>
                                 <connections>
                                     <segue destination="9eI-BI-4mk" kind="show" identifier="ShowUserSegue" id="xeB-tv-5bv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-3u-t9h">
-                                <rect key="frame" x="20" y="430" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.19730516549999999" green="0.50233145379999999" blue="0.7722340593" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Return Book">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-3u-t9h">
+                                <rect key="frame" x="20" y="304" width="560" height="30"/>
+                                <state key="normal" title="Return Book"/>
                                 <connections>
                                     <action selector="returnBook" destination="WcZ-FR-NgI" eventType="touchUpInside" id="xjM-GV-TBd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="JdD-rm-U2G" firstAttribute="trailing" secondItem="UVU-3u-t9h" secondAttribute="trailing" id="5iY-vC-pOV"/>
-                            <constraint firstItem="w4X-me-c56" firstAttribute="trailing" secondItem="fTn-HQ-5xd" secondAttribute="trailingMargin" id="7W0-la-qtM"/>
-                            <constraint firstItem="UVU-3u-t9h" firstAttribute="top" secondItem="JdD-rm-U2G" secondAttribute="bottom" constant="8" symbolic="YES" id="8BL-lY-jHH"/>
-                            <constraint firstItem="w4X-me-c56" firstAttribute="leading" secondItem="Lea-63-qjf" secondAttribute="leading" id="8ot-Zl-ovy"/>
-                            <constraint firstItem="JdD-rm-U2G" firstAttribute="leading" secondItem="UVU-3u-t9h" secondAttribute="leading" id="9w8-6w-sog"/>
-                            <constraint firstItem="w4X-me-c56" firstAttribute="trailing" secondItem="Uc9-KK-c9g" secondAttribute="trailing" id="Gal-kC-CLS"/>
-                            <constraint firstItem="Lea-63-qjf" firstAttribute="trailing" secondItem="w4X-me-c56" secondAttribute="trailing" id="N9Y-jg-gLl"/>
-                            <constraint firstItem="Uc9-KK-c9g" firstAttribute="trailing" secondItem="JdD-rm-U2G" secondAttribute="trailing" id="RGR-73-oxs"/>
-                            <constraint firstItem="JdD-rm-U2G" firstAttribute="leading" secondItem="fTn-HQ-5xd" secondAttribute="leadingMargin" id="ayw-W4-1U8"/>
-                            <constraint firstItem="JdD-rm-U2G" firstAttribute="top" secondItem="Uc9-KK-c9g" secondAttribute="bottom" constant="8" symbolic="YES" id="dcH-mL-r47"/>
-                            <constraint firstItem="JdD-rm-U2G" firstAttribute="leading" secondItem="Uc9-KK-c9g" secondAttribute="leading" id="h8S-mi-aHj"/>
-                            <constraint firstItem="uDW-dp-RFX" firstAttribute="top" secondItem="UVU-3u-t9h" secondAttribute="bottom" constant="91" id="k4a-Gh-mds"/>
-                            <constraint firstItem="Uc9-KK-c9g" firstAttribute="top" secondItem="w4X-me-c56" secondAttribute="bottom" constant="8" symbolic="YES" id="mtg-AH-ejJ"/>
-                            <constraint firstItem="w4X-me-c56" firstAttribute="leading" secondItem="Uc9-KK-c9g" secondAttribute="leading" id="p4A-Pf-J0B"/>
-                            <constraint firstItem="Lea-63-qjf" firstAttribute="top" secondItem="KW9-kg-1nF" secondAttribute="bottom" constant="8" symbolic="YES" id="tdG-hf-LUB"/>
-                            <constraint firstItem="w4X-me-c56" firstAttribute="top" secondItem="Lea-63-qjf" secondAttribute="bottom" constant="8" symbolic="YES" id="zkV-uV-bJs"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dQb-2v-EUl"/>
                     <connections>

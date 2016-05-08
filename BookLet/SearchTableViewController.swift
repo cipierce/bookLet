@@ -16,15 +16,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         static let bookSegueIdentifier = "ShowSearchResult"
     }
     
-//    let data = Data()
-    let books = [Book]()
+    let data = Data()
     
     var filteredData: [Book] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredData = books.filter { book in
+        filteredData = data.fetchAllBooks().filter { book in
                 return book.title!.lowercaseString.containsString(searchText.lowercaseString)
         }
         tableView.reloadData()
@@ -64,7 +63,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         if searchController.active && searchController.searchBar.text != "" {
             return filteredData.count
         }
-        return books.count
+        return data.fetchAllBooks().count
     }
 
     
@@ -74,7 +73,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             if searchController.active && searchController.searchBar.text != "" {
                 entry = filteredData[indexPath.row]
             } else {
-                entry = books[indexPath.row]
+                entry = data.fetchAllBooks()[indexPath.row]
             }
             cell.bookTitle.text = entry.title
             cell.bookOwner.text = entry.owner!.username
@@ -130,7 +129,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                     if searchController.active && searchController.searchBar.text != "" {
                         destination.currentBook = filteredData[bookIndex.row]
                     } else {
-                        destination.currentBook = books[bookIndex.row]
+                        destination.currentBook = data.fetchAllBooks()[bookIndex.row]
                     }
                 }
             }
