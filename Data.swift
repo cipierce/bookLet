@@ -94,6 +94,20 @@ class Data {
         return []
     }
     
+    func fetchPostedBooksForUser(username: String) -> [Book]{
+        if let user = fetchUserWithUsername(username) {
+            return user.postedBooks?.allObjects as! [Book]
+        }
+        return []
+    }
+    
+    func fetchFavoriteBooksForUser(username: String) -> [Book]{
+        if let user = fetchUserWithUsername(username) {
+            return user.favoriteBooks?.allObjects as! [Book]
+        }
+        return []
+    }
+    
     func findUserInArrayWithUsername(username: String, users: [User]) -> User? {
         for user in users {
             if user.username == username {

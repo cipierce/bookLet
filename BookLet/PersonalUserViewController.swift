@@ -10,9 +10,13 @@ import UIKit
 
 class PersonalUserViewController: UITableViewController {
     
-    let model = generateData()
+    let data = Data()
+    
+//    let model = generateData()
+    var model = [String: [Book]]()
+    
     var storedOffsets = [Int: CGFloat]()
-    var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My posted Books"]
+    var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My Posted Books"]
     var categoriesForGenericUserPage = ["Favorite Books", "Posted Books"]
     
     var generic = false
@@ -20,6 +24,17 @@ class PersonalUserViewController: UITableViewController {
     @IBOutlet weak var userLabel: UILabel!
     
     var userForPage: User?
+    
+    func retrieveBooksForUser() {
+        if let userForPage = userForPage {
+            if generic {
+                model["Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
+                model["Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
+            } else {
+                //get posted, favorite, lent and borrowed
+            }
+        }
+    }
     
     func setView() {
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -31,6 +46,7 @@ class PersonalUserViewController: UITableViewController {
                 userLabel.text = userForPage.username
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 generic = (userForPage.username != delegate.currentUser?.username)
+                retrieveBooksForUser()
             }
         }
     }
@@ -74,12 +90,17 @@ class PersonalUserViewController: UITableViewController {
 
 extension PersonalUserViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model[collectionView.tag].count
+        let categories = generic ? categoriesForGenericUserPage : categoriesForPersonalUserPage
+        let category = categories[collectionView.tag]
+        let count = model[category]!.count
+        return count
+//        return model[collectionView.tag].count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Personal User Collection View Cell", forIndexPath: indexPath)
-        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+        cell.backgroundColor = UIColor.blackColor()
         return cell
     }
     
