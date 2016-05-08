@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VB2-ft-jxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3403" y="215"/>
+            <point key="canvasLocation" x="3579" y="383"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2xX-Wr-0Tx">
@@ -348,7 +348,7 @@
                         <segue destination="pfd-E2-nLc" kind="relationship" relationship="viewControllers" id="yaD-sb-VJ4"/>
                         <segue destination="TJ8-DE-Clt" kind="relationship" relationship="viewControllers" id="IE1-hj-jvg"/>
                         <segue destination="9eI-BI-4mk" kind="relationship" relationship="viewControllers" id="zyl-II-cKk"/>
-                        <segue destination="L7c-KP-tTe" kind="relationship" relationship="viewControllers" id="484-zo-0TO"/>
+                        <segue destination="3dh-tR-sf6" kind="relationship" relationship="viewControllers" id="484-zo-0TO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1B-1F-XtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,9 +443,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jl-0F-9gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3403" y="995"/>
+            <point key="canvasLocation" x="3555" y="1267"/>
         </scene>
-        <!--Book+-->
+        <!--Post New Book-->
         <scene sceneID="5Io-ga-18K">
             <objects>
                 <viewController id="L7c-KP-tTe" customClass="NewBookViewController" customModule="BookLet" customModuleProvider="target" sceneMemberID="viewController">
@@ -458,73 +458,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COy-i2-oLf">
-                                <rect key="frame" x="20" y="28" width="560" height="21"/>
+                                <rect key="frame" x="20" y="72" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLU-Bj-D8g">
-                                <rect key="frame" x="20" y="95" width="560" height="21"/>
+                                <rect key="frame" x="20" y="139" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9v2-IX-lOb">
-                                <rect key="frame" x="20" y="57" width="560" height="30"/>
+                                <rect key="frame" x="20" y="101" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1m-88-d07">
-                                <rect key="frame" x="20" y="124" width="560" height="30"/>
+                                <rect key="frame" x="20" y="168" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCC-0E-aBO">
-                                <rect key="frame" x="20" y="162" width="503" height="31"/>
+                                <rect key="frame" x="20" y="206" width="503" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Slb-2k-3r5">
+                                <rect key="frame" x="531" y="206" width="51" height="31"/>
+                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-8W-ewF">
-                                <rect key="frame" x="20" y="201" width="560" height="30"/>
+                                <rect key="frame" x="20" y="245" width="560" height="30"/>
                                 <color key="backgroundColor" red="0.19730516549999999" green="0.50233145379999999" blue="0.7722340593" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Save Book">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="saveBook" destination="L7c-KP-tTe" eventType="touchUpInside" id="5oc-ss-ply"/>
+                                    <segue destination="WcZ-FR-NgI" kind="show" identifier="ShowNewBook" id="SFa-JI-Rrl"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Slb-2k-3r5">
-                                <rect key="frame" x="531" y="162" width="51" height="31"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RBE-8W-ewF" firstAttribute="top" secondItem="lCC-0E-aBO" secondAttribute="bottom" constant="8" symbolic="YES" id="04o-2e-hh6"/>
-                            <constraint firstItem="x1m-88-d07" firstAttribute="trailing" secondItem="QLU-Bj-D8g" secondAttribute="trailing" id="5q2-Gd-9dh"/>
-                            <constraint firstItem="9v2-IX-lOb" firstAttribute="leading" secondItem="QLU-Bj-D8g" secondAttribute="leading" id="6Gb-5y-hvV"/>
-                            <constraint firstItem="QLU-Bj-D8g" firstAttribute="top" secondItem="9v2-IX-lOb" secondAttribute="bottom" constant="8" symbolic="YES" id="89j-lJ-Yrp"/>
-                            <constraint firstItem="RBE-8W-ewF" firstAttribute="leading" secondItem="lCC-0E-aBO" secondAttribute="leading" id="BaN-7a-qWa"/>
-                            <constraint firstItem="9v2-IX-lOb" firstAttribute="top" secondItem="COy-i2-oLf" secondAttribute="bottom" constant="8" symbolic="YES" id="D2f-Mp-64z"/>
-                            <constraint firstItem="x1m-88-d07" firstAttribute="leading" secondItem="QLU-Bj-D8g" secondAttribute="leading" id="DuG-Eq-UGh"/>
-                            <constraint firstItem="lCC-0E-aBO" firstAttribute="top" secondItem="x1m-88-d07" secondAttribute="bottom" constant="8" symbolic="YES" id="EYK-St-tP3"/>
-                            <constraint firstItem="Slb-2k-3r5" firstAttribute="trailing" secondItem="RBE-8W-ewF" secondAttribute="trailing" id="KPe-7V-is1"/>
-                            <constraint firstItem="Slb-2k-3r5" firstAttribute="top" secondItem="lCC-0E-aBO" secondAttribute="top" id="LLt-Je-zyw"/>
-                            <constraint firstItem="Slb-2k-3r5" firstAttribute="leading" secondItem="lCC-0E-aBO" secondAttribute="trailing" constant="8" symbolic="YES" id="TNu-KW-C21"/>
-                            <constraint firstItem="RBE-8W-ewF" firstAttribute="top" secondItem="Slb-2k-3r5" secondAttribute="bottom" constant="8" symbolic="YES" id="azt-n5-HXU"/>
-                            <constraint firstItem="lCC-0E-aBO" firstAttribute="leading" secondItem="6Yt-2s-V8H" secondAttribute="leadingMargin" id="cGK-UK-iGd"/>
-                            <constraint firstItem="COy-i2-oLf" firstAttribute="trailing" secondItem="9v2-IX-lOb" secondAttribute="trailing" id="fwA-VS-Ohq"/>
-                            <constraint firstItem="COy-i2-oLf" firstAttribute="top" secondItem="jgM-CV-W68" secondAttribute="bottom" constant="8" symbolic="YES" id="gxi-Rx-IOC"/>
-                            <constraint firstItem="COy-i2-oLf" firstAttribute="leading" secondItem="9v2-IX-lOb" secondAttribute="leading" id="j2Z-ej-idj"/>
-                            <constraint firstItem="x1m-88-d07" firstAttribute="leading" secondItem="lCC-0E-aBO" secondAttribute="leading" id="jUC-xE-iWZ"/>
-                            <constraint firstItem="RBE-8W-ewF" firstAttribute="trailing" secondItem="6Yt-2s-V8H" secondAttribute="trailingMargin" id="kNb-3W-Mf7"/>
-                            <constraint firstItem="Slb-2k-3r5" firstAttribute="trailing" secondItem="x1m-88-d07" secondAttribute="trailing" id="ndE-nq-cjG"/>
-                            <constraint firstItem="9v2-IX-lOb" firstAttribute="trailing" secondItem="QLU-Bj-D8g" secondAttribute="trailing" id="s8Q-Kr-LAy"/>
-                            <constraint firstItem="x1m-88-d07" firstAttribute="top" secondItem="QLU-Bj-D8g" secondAttribute="bottom" constant="8" symbolic="YES" id="ulw-Ek-Wj4"/>
+                            <constraint firstItem="9v2-IX-lOb" firstAttribute="top" secondItem="COy-i2-oLf" secondAttribute="bottom" constant="8" symbolic="YES" id="5eS-di-7CI"/>
+                            <constraint firstItem="9v2-IX-lOb" firstAttribute="trailing" secondItem="QLU-Bj-D8g" secondAttribute="trailing" id="8aD-bK-uqe"/>
+                            <constraint firstItem="lCC-0E-aBO" firstAttribute="leading" secondItem="x1m-88-d07" secondAttribute="leading" id="9yZ-lO-IBE"/>
+                            <constraint firstItem="QLU-Bj-D8g" firstAttribute="leading" secondItem="9v2-IX-lOb" secondAttribute="leading" id="HLk-CQ-ePo"/>
+                            <constraint firstItem="COy-i2-oLf" firstAttribute="top" secondItem="jgM-CV-W68" secondAttribute="bottom" constant="8" symbolic="YES" id="HpF-o4-wLt"/>
+                            <constraint firstItem="QLU-Bj-D8g" firstAttribute="top" secondItem="9v2-IX-lOb" secondAttribute="bottom" constant="8" symbolic="YES" id="J6D-Gk-HOQ"/>
+                            <constraint firstItem="lCC-0E-aBO" firstAttribute="leading" secondItem="RBE-8W-ewF" secondAttribute="leading" id="Lfq-x8-Omx"/>
+                            <constraint firstItem="COy-i2-oLf" firstAttribute="trailing" secondItem="9v2-IX-lOb" secondAttribute="trailing" id="Nxq-qF-ab7"/>
+                            <constraint firstItem="QLU-Bj-D8g" firstAttribute="trailing" secondItem="x1m-88-d07" secondAttribute="trailing" id="OiU-9q-o0U"/>
+                            <constraint firstItem="x1m-88-d07" firstAttribute="top" secondItem="QLU-Bj-D8g" secondAttribute="bottom" constant="8" symbolic="YES" id="PQX-Dq-i1t"/>
+                            <constraint firstItem="x1m-88-d07" firstAttribute="trailing" secondItem="Slb-2k-3r5" secondAttribute="trailing" id="Pm9-N5-osb"/>
+                            <constraint firstItem="RBE-8W-ewF" firstAttribute="top" secondItem="Slb-2k-3r5" secondAttribute="bottom" constant="8" symbolic="YES" id="R2R-h8-mha"/>
+                            <constraint firstItem="QLU-Bj-D8g" firstAttribute="leading" secondItem="6Yt-2s-V8H" secondAttribute="leadingMargin" id="YSu-5Z-U4O"/>
+                            <constraint firstItem="RBE-8W-ewF" firstAttribute="trailing" secondItem="Slb-2k-3r5" secondAttribute="trailing" id="YkJ-by-hk4"/>
+                            <constraint firstItem="RBE-8W-ewF" firstAttribute="top" secondItem="lCC-0E-aBO" secondAttribute="bottom" constant="8" symbolic="YES" id="fk1-Pc-8p3"/>
+                            <constraint firstItem="9v2-IX-lOb" firstAttribute="leading" secondItem="COy-i2-oLf" secondAttribute="leading" id="jFX-8t-6jx"/>
+                            <constraint firstItem="Slb-2k-3r5" firstAttribute="trailing" secondItem="6Yt-2s-V8H" secondAttribute="trailingMargin" id="odu-ou-Tag"/>
+                            <constraint firstItem="Slb-2k-3r5" firstAttribute="leading" secondItem="lCC-0E-aBO" secondAttribute="trailing" constant="8" symbolic="YES" id="qqw-xM-svE"/>
+                            <constraint firstItem="Slb-2k-3r5" firstAttribute="top" secondItem="lCC-0E-aBO" secondAttribute="top" id="tVy-0l-Rv6"/>
+                            <constraint firstItem="x1m-88-d07" firstAttribute="leading" secondItem="QLU-Bj-D8g" secondAttribute="leading" id="w6l-60-ypb"/>
+                            <constraint firstItem="lCC-0E-aBO" firstAttribute="top" secondItem="x1m-88-d07" secondAttribute="bottom" constant="8" symbolic="YES" id="zAc-KX-l8f"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Book+" image="plus" id="G1D-Vv-3Xm"/>
+                    <navigationItem key="navigationItem" title="Post New Book" id="GAM-Dz-3c7"/>
                     <connections>
                         <outlet property="bookFree" destination="Slb-2k-3r5" id="y7b-fA-yY8"/>
                         <outlet property="bookImage" destination="x1m-88-d07" id="9UE-68-HLJ"/>
@@ -533,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="227-fw-Me4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="1804"/>
+            <point key="canvasLocation" x="2470" y="1710"/>
         </scene>
         <!--Shelf-->
         <scene sceneID="8RI-a2-qww">
@@ -573,6 +574,25 @@
             </objects>
             <point key="canvasLocation" x="1662" y="215"/>
         </scene>
+        <!--Book+-->
+        <scene sceneID="zCZ-Vp-afd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3dh-tR-sf6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Book+" image="plus" id="G1D-Vv-3Xm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0yU-XC-MLj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L7c-KP-tTe" kind="relationship" relationship="rootViewController" id="bYb-sy-FYB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbG-EV-HjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="1710"/>
+        </scene>
     </scenes>
     <resources>
         <image name="books" width="30" height="22"/>
@@ -582,7 +602,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0fV-oU-7YQ"/>
-        <segue reference="CO3-HV-IUR"/>
+        <segue reference="SFa-JI-Rrl"/>
         <segue reference="xeB-tv-5bv"/>
     </inferredMetricsTieBreakers>
 </document>
