@@ -14,24 +14,6 @@ class Data {
     
     let managedObjectContext = DataController().managedObjectContext
     
-    func fetchPostedBooksForUser(username username: String) -> [Book] {
-        var returnBooks = [Book]()
-        let userFetch = NSFetchRequest(entityName: "User")
-        do {
-            let fetchedUsers = try managedObjectContext.executeFetchRequest(userFetch) as! [User]
-            if let testUser = findUserInArrayWithUsername(username, users: fetchedUsers) {
-                if let books = testUser.postedBooks {
-                    for book in books {
-                        returnBooks.append(book as! Book)
-                    }
-                }
-            }
-        } catch {
-            fatalError("failed to save because: \(error)")
-        }
-        return returnBooks
-    }
-    
     func addUser(username username: String, emailAddress: String) -> String? {
         let entity = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as! User
         entity.setValue(username, forKey: "username")
@@ -45,20 +27,13 @@ class Data {
     }
 
     func addBook(title title: String, owner: String, imagefname: String, borrowed: Bool, free: Bool) -> String? {
-        print("add book with title: \(title)")
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
         entity.setValue(title, forKey: "title")
         entity.setValue(imagefname, forKey: "image")
         entity.setValue(borrowed, forKey: "borrowed")
         entity.setValue(free, forKey: "free")
         entity.setValue(fetchUserWithUsername(owner), forKey: "owner")
-        //FIXME: unique id hack
-        var idNumber = 0
-        if let lastBook = fetchAllBooks().last {
-            if let lastBookId = lastBook.id {
-                idNumber = Int(lastBookId)! + 1
-            }
-        }
+        let idNumber = fetchAllBooks().count + 1 //this only works if while don't allow for deleting books
         entity.setValue("\(idNumber)", forKey: "id")
         do {
             try managedObjectContext.save()
@@ -92,6 +67,15 @@ class Data {
             fatalError("failed to save because: \(error)")
         }
         return []
+    }
+    
+    func fetchBookWithTitleByUser(title: String, user: User?) -> Book? {
+        for book in fetchAllBooks() {
+            if (book.title == title) && (book.owner?.username == user?.username) {
+                return book
+            }
+        }
+        return nil
     }
     
     func fetchPostedBooksForUser(username: String) -> [Book]{

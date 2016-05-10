@@ -495,7 +495,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveBook" destination="L7c-KP-tTe" eventType="touchUpInside" id="5oc-ss-ply"/>
                                     <segue destination="WcZ-FR-NgI" kind="show" identifier="ShowNewBook" id="SFa-JI-Rrl"/>
                                 </connections>
                             </button>

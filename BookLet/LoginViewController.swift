@@ -48,6 +48,7 @@ class LoginViewController: UIViewController {
                             if let error = data.addUser(username: username, emailAddress: emailAddress) {
                                 alertText = error
                             } else {
+                                loginUser = data.fetchUserWithUsername(username)
                                 return
                             }
                         } else {

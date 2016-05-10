@@ -14,6 +14,10 @@ class NewBookViewController: UIViewController {
     
     var currentUser: User?
     
+    struct StringConstants {
+        static let newBookSegueIdentifier = "ShowNewBook"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fixTextFields()
@@ -40,7 +44,7 @@ class NewBookViewController: UIViewController {
     
     @IBOutlet weak var bookFree: UISwitch!
     
-    @IBAction func saveBook() {
+    func saveBook() {
         var alertText = ""
         if let title = bookTitle.text {
             if title != "" {
@@ -49,6 +53,7 @@ class NewBookViewController: UIViewController {
                         if let error = data.addBook(title: title, owner: currentUser!.username!, imagefname: imagefname, borrowed: false, free: bookFree.on) {
                                 alertText = error
                         } else {
+                            newBook = data.fetchBookWithTitleByUser(title, user: currentUser)
                             return
                         }
                     } else {
@@ -69,11 +74,10 @@ class NewBookViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.description == "ShowNewBook" {
+        if segue.identifier == StringConstants.newBookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {
-                if newBook != nil {
-                    destination.currentBook = newBook
-                }
+                saveBook()
+                destination.currentBook = newBook
             }
         }
     }

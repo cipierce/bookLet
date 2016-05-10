@@ -12,11 +12,11 @@ class PersonalUserViewController: UITableViewController {
     
     let data = Data()
     
-//    let model = generateData()
-    var model = [String: [Book]]()
+    let model = generateData()
+//    var model = [String: [Book]]()
     
     var storedOffsets = [Int: CGFloat]()
-    var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've lent", "Books I've borrowed", "My Posted Books"]
+    var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've Lent", "Books I've Borrowed", "My Posted Books"]
     var categoriesForGenericUserPage = ["Favorite Books", "Posted Books"]
     
     var generic = false
@@ -25,16 +25,19 @@ class PersonalUserViewController: UITableViewController {
     
     var userForPage: User?
     
-    func retrieveBooksForUser() {
-        if let userForPage = userForPage {
-            if generic {
-                model["Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
-                model["Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
-            } else {
-                //get posted, favorite, lent and borrowed
-            }
-        }
-    }
+//    func retrieveBooksForUser() {
+//        if let userForPage = userForPage {
+//            if generic {
+//                model["Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
+//                model["Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
+//            } else {
+//                model["My Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
+//                model["Books I've Lent"] = [Book]() // change this
+//                model["Books I've Borrowed"] = [Book]() // change this
+//                model["My Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
+//            }
+//        }
+//    }
     
     func setView() {
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -46,7 +49,8 @@ class PersonalUserViewController: UITableViewController {
                 userLabel.text = userForPage.username
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 generic = (userForPage.username != delegate.currentUser?.username)
-                retrieveBooksForUser()
+//                retrieveBooksForUser()
+//                tableView.reloadData()
             }
         }
     }
@@ -92,15 +96,16 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let categories = generic ? categoriesForGenericUserPage : categoriesForPersonalUserPage
         let category = categories[collectionView.tag]
-        let count = model[category]!.count
-        return count
-//        return model[collectionView.tag].count
+//        if let count = model[category]?.count {
+//            return count
+//        }
+//        return 0
+        return model[collectionView.tag].count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Personal User Collection View Cell", forIndexPath: indexPath)
-//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
-        cell.backgroundColor = UIColor.blackColor()
+        cell.backgroundColor = model[collectionView.tag][indexPath.item]
         return cell
     }
     
