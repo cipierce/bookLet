@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailAddressField: UITextField!
     
-    //FIXME: call this at some point
     func fixTextFields() {
         usernameField.autocapitalizationType = .None
         usernameField.autocorrectionType = .No
@@ -30,10 +29,12 @@ class LoginViewController: UIViewController {
         emailAddressField.autocapitalizationType = .None
     }
 
+    @IBOutlet weak var newUserButton: UIButton!
     @IBAction func loginAsNew() {
         login(asNewUser: true)
     }
     
+    @IBOutlet weak var existingUserButton: UIButton!
     @IBAction func loginAsExisting(sender: UIButton) {
         login(asNewUser: false)
     }
@@ -75,6 +76,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fixTextFields()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bookBackground")!)
     }
     
     // MARK: - Navigation

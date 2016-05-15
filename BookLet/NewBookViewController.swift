@@ -56,6 +56,8 @@ class NewBookViewController: UIViewController {
                         } else {
                             newBook = data.fetchBookWithTitleByUser(title, user: currentUser)
                             NSNotificationCenter.defaultCenter().postNotificationName(StringConstants.reloadDataIdentifier, object: nil)
+                            bookTitle.text = ""
+                            bookImage.text = ""
                             return
                         }
                     } else {
