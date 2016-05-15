@@ -14,7 +14,6 @@ class PersonalUserViewController: UITableViewController {
     
     let data = Data()
     
-    //let model = generateData()
     var model = [Int: [Book]]()
     
     var storedOffsets = [Int: CGFloat]()
@@ -39,7 +38,6 @@ class PersonalUserViewController: UITableViewController {
                 model[3] = data.fetchPostedBooksForUser(userForPage.username!)
             }
         }
-        
     }
     
     func setView() {
@@ -63,9 +61,7 @@ class PersonalUserViewController: UITableViewController {
         setView()
     }
     
-    // & changed this -- needed to be rows based on user/not, not sections??
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         //return generic ? categoriesForGenericUserPage.count : categoriesForPersonalUserPage.count
         return 1
     }
     
@@ -100,23 +96,28 @@ class PersonalUserViewController: UITableViewController {
 
 extension PersonalUserViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let categories = generic ? categoriesForGenericUserPage : categoriesForPersonalUserPage
-        let category = categories[collectionView.tag]
-        print("cat: \(category), collectionViewTag: \(collectionView.tag)")
-        print("collectionViewTag: \(collectionView.tag)")
         if let count = model[collectionView.tag]?.count {
             return count
         }
         return 0
-        //print("\(model[collectionView.tag]!.count)")
-        //return model[collectionView.tag]!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Personal User Collection View Cell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.grayColor()  // model[collectionView.tag]![indexPath.section][indexPath.item]
-        print("collectionViewTag: \(collectionView.tag), indexPath: \(indexPath), indexPath.item: \(indexPath.item)")
-        return cell
+        
+        guard let collectionViewCell = cell as? PersonalUserCollectionViewCell else {return cell}
+        
+        let thisBook = model[collectionView.tag]![indexPath.item]
+        let width = collectionViewCell.bounds.width
+        let height = collectionViewCell.bounds.height
+        let bookView = UIImageView(frame: CGRectMake(0, 0, width, height))
+        bookView.image = UIImage(named: thisBook.image!)
+        bookView.contentMode = .ScaleAspectFit
+        collectionViewCell.bookImage.image = bookView.image
+        collectionViewCell.bookImage.contentMode = .ScaleAspectFit
+        collectionViewCell.bookLabel.text = thisBook.title
+        
+        return collectionViewCell
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
