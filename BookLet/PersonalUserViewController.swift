@@ -9,11 +9,13 @@
 import UIKit
 
 class PersonalUserViewController: UITableViewController {
+    /*used this tutorial for the framework of this page:
+    ** https://ashfurrow.com/blog/putting-a-uicollectionview-in-a-uitableviewcell-in-swift/ */
     
     let data = Data()
     
-    let model = generateData()
-//    var model = [String: [Book]]()
+    //let model = generateData()
+    var model = [Int: [Book]]()
     
     var storedOffsets = [Int: CGFloat]()
     var categoriesForPersonalUserPage = ["My Favorite Books", "Books I've Lent", "Books I've Borrowed", "My Posted Books"]
@@ -25,19 +27,20 @@ class PersonalUserViewController: UITableViewController {
     
     var userForPage: User?
     
-//    func retrieveBooksForUser() {
-//        if let userForPage = userForPage {
-//            if generic {
-//                model["Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
-//                model["Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
-//            } else {
-//                model["My Favorite Books"] = data.fetchFavoriteBooksForUser(userForPage.username!)
-//                model["Books I've Lent"] = [Book]() // change this
-//                model["Books I've Borrowed"] = [Book]() // change this
-//                model["My Posted Books"] = data.fetchPostedBooksForUser(username: userForPage.username!)
-//            }
-//        }
-//    }
+    func retrieveBooksForUser() {
+        if let userForPage = userForPage {
+            if generic {
+                model[0] = data.fetchFavoriteBooksForUser(userForPage.username!)
+                model[1] = data.fetchPostedBooksForUser(userForPage.username!)
+            } else {
+                model[0] = data.fetchFavoriteBooksForUser(userForPage.username!)
+                model[1] = [Book]() // change this
+                model[2] = [Book]() // change this
+                model[3] = data.fetchPostedBooksForUser(userForPage.username!)
+            }
+        }
+        
+    }
     
     func setView() {
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -49,8 +52,8 @@ class PersonalUserViewController: UITableViewController {
                 userLabel.text = userForPage.username
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 generic = (userForPage.username != delegate.currentUser?.username)
-//                retrieveBooksForUser()
-//                tableView.reloadData()
+                retrieveBooksForUser()
+                tableView.reloadData()
             }
         }
     }
@@ -60,7 +63,9 @@ class PersonalUserViewController: UITableViewController {
         setView()
     }
     
+    // & changed this -- needed to be rows based on user/not, not sections??
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         //return generic ? categoriesForGenericUserPage.count : categoriesForPersonalUserPage.count
         return 1
     }
     
@@ -76,7 +81,7 @@ class PersonalUserViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         guard let tableViewCell = cell as? PersonalUserTableViewCell else { return }
         
-        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        tableViewCell.setCollectionViewDataSourceDelegate(self, forSection: indexPath.section)
         tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
     }
     
@@ -90,22 +95,27 @@ class PersonalUserViewController: UITableViewController {
         return categories[section]
     }
     
+    
 }
 
 extension PersonalUserViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let categories = generic ? categoriesForGenericUserPage : categoriesForPersonalUserPage
         let category = categories[collectionView.tag]
-//        if let count = model[category]?.count {
-//            return count
-//        }
-//        return 0
-        return model[collectionView.tag].count
+        print("cat: \(category), collectionViewTag: \(collectionView.tag)")
+        print("collectionViewTag: \(collectionView.tag)")
+        if let count = model[collectionView.tag]?.count {
+            return count
+        }
+        return 0
+        //print("\(model[collectionView.tag]!.count)")
+        //return model[collectionView.tag]!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Personal User Collection View Cell", forIndexPath: indexPath)
-        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+        cell.backgroundColor = UIColor.grayColor()  // model[collectionView.tag]![indexPath.section][indexPath.item]
+        print("collectionViewTag: \(collectionView.tag), indexPath: \(indexPath), indexPath.item: \(indexPath.item)")
         return cell
     }
     

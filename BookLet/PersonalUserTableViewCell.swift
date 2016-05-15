@@ -9,6 +9,8 @@
 import UIKit
 
 class PersonalUserTableViewCell: UITableViewCell {
+    /*used this tutorial for the framework of this page:
+    ** https://ashfurrow.com/blog/putting-a-uicollectionview-in-a-uitableviewcell-in-swift/ */
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -16,10 +18,10 @@ class PersonalUserTableViewCell: UITableViewCell {
 
 extension PersonalUserTableViewCell {
     
-    func setCollectionViewDataSourceDelegate <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataSourceDelegate: D, forRow row: Int) {
+    func setCollectionViewDataSourceDelegate <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataSourceDelegate: D, forSection section: Int) {
         collectionView.delegate = dataSourceDelegate
         collectionView.dataSource = dataSourceDelegate
-        collectionView.tag = row
+        collectionView.tag = section
         collectionView.reloadData()
     }
     
