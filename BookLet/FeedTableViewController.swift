@@ -13,24 +13,18 @@ class FeedTableViewController: UITableViewController {
     
     struct StringConstants {
         static let bookSegueIdentifier = "ShowBookSegue"
+        static let cellIdentifier = "FeedCell"
+        static let reloadDataIdentifier = "reloadData"
     }
 
     var data = Data()
     
+    /*Sets up observer for reloading data when user adds a new book.  Reloads data for entire app.*/
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
+                self.tableView.reloadData()
+        })
     }
 
     // MARK: - Table view data source
@@ -45,52 +39,16 @@ class FeedTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell", forIndexPath: indexPath) as? FeedTableViewCell
-        let entry = data.fetchAllBooks()[indexPath.row]
-        cell!.bookTitle.text = entry.title
-        cell!.bookOwnerUsername.text = entry.owner!.username
-        cell!.bookIcon.contentMode = .ScaleAspectFit
-        cell!.bookIcon.image = UIImage(named: entry.image!)
-        return cell!
-        //FIXME: needs error handling
+        if let cell = tableView.dequeueReusableCellWithIdentifier(StringConstants.cellIdentifier, forIndexPath: indexPath) as? FeedTableViewCell {
+            let entry = data.fetchAllBooks()[indexPath.row]
+            cell.bookTitle.text = entry.title
+            cell.bookOwnerUsername.text = entry.owner!.username
+            cell.bookIcon.contentMode = .ScaleAspectFit
+            cell.bookIcon.image = UIImage(named: entry.image!)
+            return cell
+        }
+        return tableView.dequeueReusableCellWithIdentifier(StringConstants.cellIdentifier, forIndexPath: indexPath)
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
 
     // MARK: - Navigation
 

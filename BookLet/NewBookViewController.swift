@@ -16,6 +16,7 @@ class NewBookViewController: UIViewController {
     
     struct StringConstants {
         static let newBookSegueIdentifier = "ShowNewBook"
+        static let reloadDataIdentifier = "reloadData"
     }
     
     override func viewDidLoad() {
@@ -54,6 +55,7 @@ class NewBookViewController: UIViewController {
                                 alertText = error
                         } else {
                             newBook = data.fetchBookWithTitleByUser(title, user: currentUser)
+                            NSNotificationCenter.defaultCenter().postNotificationName(StringConstants.reloadDataIdentifier, object: nil)
                             return
                         }
                     } else {
