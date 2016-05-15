@@ -26,13 +26,17 @@ class Data {
         return nil
     }
 
-    func addBook(title title: String, owner: String, imagefname: String, borrowed: Bool, free: Bool) -> String? {
+    func addBook(title title: String, owner: String, imagefname: String, borrowed: Bool, free: Bool, favorite: Bool) -> String? {
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedObjectContext) as! Book
         entity.setValue(title, forKey: "title")
         entity.setValue(imagefname, forKey: "image")
         entity.setValue(borrowed, forKey: "borrowed")
         entity.setValue(free, forKey: "free")
-        entity.setValue(fetchUserWithUsername(owner), forKey: "owner")
+        let user = fetchUserWithUsername(owner)
+        if favorite {
+            entity.setValue(user, forKey: "favoritedBy")
+        }
+        entity.setValue(user, forKey: "owner")
         let idNumber = fetchAllBooks().count + 1 //this only works if while don't allow for deleting books
         entity.setValue("\(idNumber)", forKey: "id")
         do {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1713" minimumToolsVersion="Xcode 7.0">
     <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="borrowed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="free" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="borrower" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="borrowedBooks" inverseEntity="User" syncable="YES"/>
+        <relationship name="favoritedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteBooks" inverseEntity="User" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="postedBooks" inverseEntity="User" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -18,7 +19,7 @@
         <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="borrowedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="borrower" inverseEntity="Book" syncable="YES"/>
-        <relationship name="favoriteBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" syncable="YES"/>
+        <relationship name="favoriteBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="favoritedBy" inverseEntity="Book" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="following" inverseEntity="User" syncable="YES"/>
         <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followers" inverseEntity="User" syncable="YES"/>
         <relationship name="postedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="owner" inverseEntity="Book" syncable="YES"/>
@@ -29,7 +30,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="Book" positionX="-63" positionY="0" width="128" height="148"/>
+        <element name="Book" positionX="-63" positionY="0" width="128" height="165"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

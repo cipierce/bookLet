@@ -21,7 +21,7 @@ class NewBookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fixTextFields()
+        setupOptions()
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         currentUser = delegate.currentUser
     }
@@ -31,10 +31,12 @@ class NewBookViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func fixTextFields() {
+    func setupOptions() {
         bookTitle.autocapitalizationType = .Words
         bookImage.autocapitalizationType = .None
         bookImage.autocorrectionType = .No
+        bookFree.on = false
+        bookFavorite.on = false
     }
     
     var newBook: Book?
@@ -45,13 +47,15 @@ class NewBookViewController: UIViewController {
     
     @IBOutlet weak var bookFree: UISwitch!
     
+    @IBOutlet weak var bookFavorite: UISwitch!
+    
     func saveBook() {
         var alertText = ""
         if let title = bookTitle.text {
             if title != "" {
                 if let imagefname = bookImage.text {
                     if imagefname != "" {
-                        if let error = data.addBook(title: title, owner: currentUser!.username!, imagefname: imagefname, borrowed: false, free: bookFree.on) {
+                        if let error = data.addBook(title: title, owner: currentUser!.username!, imagefname: imagefname, borrowed: false, free: bookFree.on, favorite: bookFavorite.on) {
                                 alertText = error
                         } else {
                             newBook = data.fetchBookWithTitleByUser(title, user: currentUser)
