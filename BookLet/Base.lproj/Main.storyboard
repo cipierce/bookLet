@@ -19,8 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-me-c56">
-                                <rect key="frame" x="20" y="180" width="560" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-me-c56">
+                                <rect key="frame" x="20" y="277" width="560" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="LTa-w2-lGl"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Book Title">
                                         <attributes>
@@ -31,25 +34,37 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdD-rm-U2G">
-                                <rect key="frame" x="20" y="266" width="560" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdD-rm-U2G">
+                                <rect key="frame" x="20" y="363" width="560" height="30"/>
                                 <state key="normal" title="Buy Book"/>
                                 <connections>
                                     <action selector="buyBook" destination="WcZ-FR-NgI" eventType="touchUpInside" id="Nom-9c-cNS"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-63-qjf">
-                                <rect key="frame" x="20" y="72" width="560" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-63-qjf">
+                                <rect key="frame" x="20" y="72" width="560" height="197"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KK-c9g">
-                                <rect key="frame" x="20" y="222" width="560" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KK-c9g">
+                                <rect key="frame" x="20" y="319" width="560" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="yG4-y8-Zrc"/>
+                                </constraints>
                                 <state key="normal" title="Username"/>
                                 <connections>
                                     <segue destination="9eI-BI-4mk" kind="show" identifier="ShowUserSegue" id="xeB-tv-5bv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-3u-t9h">
-                                <rect key="frame" x="20" y="304" width="560" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-6g-Dci">
+                                <rect key="frame" x="20" y="401" width="560" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="EDl-Ox-e2z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-3u-t9h">
+                                <rect key="frame" x="20" y="432" width="560" height="30"/>
                                 <state key="normal" title="Return Book"/>
                                 <connections>
                                     <action selector="returnBook" destination="WcZ-FR-NgI" eventType="touchUpInside" id="xjM-GV-TBd"/>
@@ -57,6 +72,27 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JdD-rm-U2G" firstAttribute="top" secondItem="Uc9-KK-c9g" secondAttribute="bottom" constant="8" symbolic="YES" id="26Y-5f-457"/>
+                            <constraint firstItem="w4X-me-c56" firstAttribute="trailing" secondItem="Uc9-KK-c9g" secondAttribute="trailing" id="6qJ-po-aKv"/>
+                            <constraint firstItem="w4X-me-c56" firstAttribute="top" secondItem="Lea-63-qjf" secondAttribute="bottom" constant="8" symbolic="YES" id="9Uq-4t-B8J"/>
+                            <constraint firstItem="JdD-rm-U2G" firstAttribute="trailing" secondItem="Fa9-6g-Dci" secondAttribute="trailing" id="FFI-ag-jjb"/>
+                            <constraint firstItem="Uc9-KK-c9g" firstAttribute="leading" secondItem="JdD-rm-U2G" secondAttribute="leading" id="IY9-hH-YEH"/>
+                            <constraint firstItem="w4X-me-c56" firstAttribute="leading" secondItem="Lea-63-qjf" secondAttribute="leading" id="L7P-Ti-xJF"/>
+                            <constraint firstItem="JdD-rm-U2G" firstAttribute="trailing" secondItem="Uc9-KK-c9g" secondAttribute="trailing" id="Lcs-Tr-2ac"/>
+                            <constraint firstItem="JdD-rm-U2G" firstAttribute="leading" secondItem="Fa9-6g-Dci" secondAttribute="leading" id="Nnh-1T-JhV"/>
+                            <constraint firstItem="UVU-3u-t9h" firstAttribute="leading" secondItem="Fa9-6g-Dci" secondAttribute="leading" id="Nnu-30-435"/>
+                            <constraint firstItem="Lea-63-qjf" firstAttribute="trailing" secondItem="w4X-me-c56" secondAttribute="trailing" id="PEV-9C-xC3"/>
+                            <constraint firstItem="Uc9-KK-c9g" firstAttribute="top" secondItem="w4X-me-c56" secondAttribute="bottom" constant="8" symbolic="YES" id="adS-L7-0ZJ"/>
+                            <constraint firstItem="Fa9-6g-Dci" firstAttribute="top" secondItem="JdD-rm-U2G" secondAttribute="bottom" constant="8" symbolic="YES" id="deJ-YD-e9h"/>
+                            <constraint firstItem="JdD-rm-U2G" firstAttribute="leading" secondItem="fTn-HQ-5xd" secondAttribute="leadingMargin" id="gnm-ds-mw4"/>
+                            <constraint firstItem="UVU-3u-t9h" firstAttribute="trailing" secondItem="Fa9-6g-Dci" secondAttribute="trailing" id="kBb-ir-Z9Z"/>
+                            <constraint firstItem="w4X-me-c56" firstAttribute="leading" secondItem="Uc9-KK-c9g" secondAttribute="leading" id="m8J-qU-XeH"/>
+                            <constraint firstItem="Lea-63-qjf" firstAttribute="top" secondItem="KW9-kg-1nF" secondAttribute="bottom" constant="8" symbolic="YES" id="mwk-Eo-UJf"/>
+                            <constraint firstItem="uDW-dp-RFX" firstAttribute="top" secondItem="UVU-3u-t9h" secondAttribute="bottom" constant="89" id="tyb-RH-oZ1"/>
+                            <constraint firstItem="UVU-3u-t9h" firstAttribute="top" secondItem="Fa9-6g-Dci" secondAttribute="bottom" constant="8" symbolic="YES" id="wR7-Tx-sqi"/>
+                            <constraint firstItem="w4X-me-c56" firstAttribute="trailing" secondItem="fTn-HQ-5xd" secondAttribute="trailingMargin" id="yDD-I0-Ztg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dQb-2v-EUl"/>
                     <connections>

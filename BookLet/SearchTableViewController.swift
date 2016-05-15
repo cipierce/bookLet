@@ -14,6 +14,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     struct StringConstants {
         static let bookSegueIdentifier = "ShowSearchResult"
+        static let reloadDataIdentifier = "reloadData"
     }
     
     let data = Data()
@@ -35,7 +36,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
+            self.tableView.reloadData()
+        })
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
