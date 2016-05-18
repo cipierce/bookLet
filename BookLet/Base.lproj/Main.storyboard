@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bwJ-fu-GUY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fcN-gV-iq2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VB2-ft-jxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3579" y="383"/>
+            <point key="canvasLocation" x="4391" y="383"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2xX-Wr-0Tx">
@@ -170,7 +170,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BookLet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3st-5v-uVg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BookLet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3st-5v-uVg">
                                 <rect key="frame" x="20" y="37" width="560" height="113"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="80"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,6 +218,7 @@
                             <constraint firstItem="kTx-Da-YCb" firstAttribute="top" secondItem="Yvm-gb-x9T" secondAttribute="bottom" constant="8" symbolic="YES" id="yNN-Y0-RBq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Abf-Mr-h1n"/>
                     <connections>
                         <outlet property="emailAddressField" destination="Yvm-gb-x9T" id="9KB-aM-7tu"/>
                         <outlet property="existingUserButton" destination="yix-jG-bJn" id="0U0-es-v42"/>
@@ -228,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0H-qh-ePT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="597"/>
+            <point key="canvasLocation" x="1028" y="597"/>
         </scene>
         <!--Search-->
         <scene sceneID="hiR-Ld-rWU">
@@ -317,7 +318,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5p-da-bNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2470" y="215"/>
+            <point key="canvasLocation" x="3282" y="215"/>
         </scene>
         <!--My Feed-->
         <scene sceneID="sPw-2n-jiP">
@@ -400,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFx-71-Vtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2470" y="995"/>
+            <point key="canvasLocation" x="3282" y="995"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WsK-Ax-AE3">
@@ -420,7 +421,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1B-1F-XtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914" y="597"/>
+            <point key="canvasLocation" x="1726" y="597"/>
         </scene>
         <!--Me-->
         <scene sceneID="2gM-dw-LwS">
@@ -631,7 +632,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQf-k7-M0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="995"/>
+            <point key="canvasLocation" x="2474" y="995"/>
         </scene>
         <!--Search-->
         <scene sceneID="6hS-tV-aoL">
@@ -650,7 +651,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJ1-P0-9GD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="215"/>
+            <point key="canvasLocation" x="2474" y="215"/>
         </scene>
         <!--Book+-->
         <scene sceneID="zCZ-Vp-afd">
@@ -671,6 +672,24 @@
             </objects>
             <point key="canvasLocation" x="1662" y="1710"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8DA-HN-Ivt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fcN-gV-iq2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Jk-Nb-Dmk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bwJ-fu-GUY" kind="relationship" relationship="rootViewController" id="7LG-LD-QZv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rw-H0-gbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="597"/>
+        </scene>
     </scenes>
     <resources>
         <image name="books" width="30" height="22"/>
@@ -681,6 +700,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="SFa-JI-Rrl"/>
         <segue reference="Cyk-2o-rLR"/>
-        <segue reference="xeB-tv-5bv"/>
+        <segue reference="zyl-II-cKk"/>
     </inferredMetricsTieBreakers>
 </document>

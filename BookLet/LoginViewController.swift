@@ -98,8 +98,12 @@ class LoginViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.loginSegueIdentifier {
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.currentUser = loginUser
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.currentUser = loginUser
+            let backButton = UIBarButtonItem()
+            backButton.title = ""
+            backButton.setBackButtonBackgroundImage(UIImage(named: "logout"), forState: .Normal, barMetrics: .Default)
+            navigationItem.backBarButtonItem = backButton
         }
     }
     
