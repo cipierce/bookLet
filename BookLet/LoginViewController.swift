@@ -104,6 +104,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         fixTextFields()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "booksT")!)
+        // image: http://66.media.tumblr.com/3f0bc3f7135258853503b0e23c6bb795/tumblr_meqvadCGYZ1qzb5wzo1_1280.jpg
     }
     
     // MARK: - Navigation
