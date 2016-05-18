@@ -15,6 +15,10 @@ class PersonalUserViewController: UITableViewController {
     /* used code from Jayesh Miruliya's StackOverflow to change fonts in TableView headers:
     http://stackoverflow.com/questions/31381762/swift-ios-8-change-font-title-of-section-in-a-tableview */
     
+    struct StringConstants {
+        static let reloadDataIdentifier = "reloadData"
+    }
+    
     let data = Data()
     
     var model = [Int: [Book]]()
@@ -54,13 +58,15 @@ class PersonalUserViewController: UITableViewController {
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 generic = (userForPage.username != delegate.currentUser?.username)
                 retrieveBooksForUser()
-                tableView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
+            self.tableView.reloadData()
+        })
         setView()
     }
     
