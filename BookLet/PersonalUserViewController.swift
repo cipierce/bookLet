@@ -17,6 +17,8 @@ class PersonalUserViewController: UITableViewController {
     
     struct StringConstants {
         static let reloadDataIdentifier = "reloadData"
+        static let tableViewCellIdentifier = "Personal User Table View Cell"
+        static let collectionViewCellIdentifier = "Personal User Collection View Cell"
     }
     
     let data = Data()
@@ -41,7 +43,7 @@ class PersonalUserViewController: UITableViewController {
             } else {
                 model[0] = data.fetchFavoriteBooksForUser(userForPage.username!)
                 model[1] = [Book]() // change this
-                model[2] = [Book]() // change this
+                model[2] = data.fetchBorrowedBooksForUser(userForPage.username!)
                 model[3] = data.fetchPostedBooksForUser(userForPage.username!)
             }
         }
@@ -75,7 +77,7 @@ class PersonalUserViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Personal User Table View Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(StringConstants.tableViewCellIdentifier, forIndexPath: indexPath)
         cell.textLabel?.font = UIFont(name: "Avenir", size: 22)
         return cell
     }
@@ -105,10 +107,10 @@ class PersonalUserViewController: UITableViewController {
         let rowTitle = UILabel()
         rowTitle.font = UIFont(name: "Avenir", size: 18)!
         rowTitle.textColor = UIColor.grayColor()
-        
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font=rowTitle.font
-        header.textLabel?.textColor=rowTitle.textColor
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.font=rowTitle.font
+            header.textLabel?.textColor=rowTitle.textColor
+        }
     }
 
 }
@@ -122,7 +124,7 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Personal User Collection View Cell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StringConstants.collectionViewCellIdentifier, forIndexPath: indexPath)
         
         guard let collectionViewCell = cell as? PersonalUserCollectionViewCell else {return cell}
         
@@ -130,7 +132,9 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
         let width = collectionViewCell.bounds.width
         let height = collectionViewCell.bounds.height
         let bookView = UIImageView(frame: CGRectMake(0, 0, width, height))
-        bookView.image = UIImage(named: thisBook.image!)
+        if let image = thisBook.image {
+            bookView.image = UIImage(named: image)
+        }
         bookView.contentMode = .ScaleAspectFit
         collectionViewCell.bookImage.image = bookView.image
         collectionViewCell.bookImage.contentMode = .ScaleAspectFit
@@ -138,11 +142,4 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
         
         return collectionViewCell
     }
-    
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        print("collection view at row \(collectionView.tag) selected index path \(indexPath)")
-    }
-    
-
-
 }

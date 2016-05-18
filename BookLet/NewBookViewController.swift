@@ -8,34 +8,32 @@
 
 import UIKit
 
+/*This class controlls the page where the user can upload a new book.*/
 class NewBookViewController: UIViewController{
-
-
 
     let data = Data()
     
     var currentUser: User?
     
+    var newBook: Book?
+    
     struct StringConstants {
         static let newBookSegueIdentifier = "ShowNewBook"
         static let reloadDataIdentifier = "reloadData"
+        static let emptyImageFilenameError = "Please enter an image filename"
+        static let emptyTitleError = "Please enter a book title"
+        static let empty = ""
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupOptions()
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        currentUser = delegate.currentUser
-        if let font = UIFont(name: "Avenir", size: 20) {
-            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
+        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            currentUser = delegate.currentUser
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    /*Manage UI elements*/
     func setupOptions() {
         bookTitle.autocapitalizationType = .Words
         bookImage.autocapitalizationType = .None
@@ -43,8 +41,6 @@ class NewBookViewController: UIViewController{
         bookFree.on = false
         bookFavorite.on = false
     }
-    
-    var newBook: Book?
     
     @IBOutlet weak var bookTitle: UITextField!
     
@@ -54,27 +50,28 @@ class NewBookViewController: UIViewController{
     
     @IBOutlet weak var bookFavorite: UISwitch!
     
+    /*Save a new book.  Check if the user has entered a title and image pathname.*/
     func saveBook() {
-        var alertText = ""
+        var alertText = StringConstants.empty
         if let title = bookTitle.text {
-            if title != "" {
+            if title != StringConstants.empty {
                 if let imagefname = bookImage.text {
-                    if imagefname != "" {
+                    if imagefname != StringConstants.empty {
                         if let error = data.addBook(title: title, owner: currentUser!.username!, imagefname: imagefname, borrowed: false, free: bookFree.on, favorite: bookFavorite.on) {
                                 alertText = error
                         } else {
                             newBook = data.fetchBookWithTitleByUser(title, user: currentUser)
                             NSNotificationCenter.defaultCenter().postNotificationName(StringConstants.reloadDataIdentifier, object: nil)
-                            bookTitle.text = ""
-                            bookImage.text = ""
+                            bookTitle.text = StringConstants.empty
+                            bookImage.text = StringConstants.empty
                             return
                         }
                     } else {
-                        alertText = "Please enter an image filename"
+                        alertText = StringConstants.emptyImageFilenameError
                     }
                 }
             } else {
-                alertText = "Please enter a book title"
+                alertText = StringConstants.emptyTitleError
             }
         }
         let alert = UIAlertController(title: "Oops!", message: alertText, preferredStyle: UIAlertControllerStyle.Alert)
@@ -85,7 +82,8 @@ class NewBookViewController: UIViewController{
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*Before segue to adding new book, try to save the book.  If the save is successful, will
+    ** segue to book page with information of new book. */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.newBookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {

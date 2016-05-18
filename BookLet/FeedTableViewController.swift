@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+/*Controller for the activity feed page.  Should show book activity for users
+** the current user follows, but following is not yet implemented.*/
 class FeedTableViewController: UITableViewController {
     
     struct StringConstants {
@@ -18,16 +20,13 @@ class FeedTableViewController: UITableViewController {
     }
 
     var data = Data()
-    
-    /*Sets up observer for reloading data when user adds a new book.  Reloads data for entire app.*/
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Sets up observer for reloading data when user adds a new book.
         NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
                 self.tableView.reloadData()
         })
-        if let font = UIFont(name: "Avenir", size: 20) {
-            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
-        }
     }
 
     // MARK: - Table view data source
@@ -39,7 +38,6 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.fetchAllBooks().count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier(StringConstants.cellIdentifier, forIndexPath: indexPath) as? FeedTableViewCell {
@@ -47,7 +45,9 @@ class FeedTableViewController: UITableViewController {
             cell.bookTitle.text = entry.title
             cell.bookOwnerUsername.text = entry.owner!.username
             cell.bookIcon.contentMode = .ScaleAspectFit
-            cell.bookIcon.image = UIImage(named: entry.image!)
+            if let image = entry.image {
+                cell.bookIcon.image = UIImage(named: image)
+            }
             return cell
         }
         return tableView.dequeueReusableCellWithIdentifier(StringConstants.cellIdentifier, forIndexPath: indexPath)
@@ -55,7 +55,7 @@ class FeedTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    /*send book information to next book page*/
+    /*Send book information to next book page*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.bookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {

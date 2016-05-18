@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 
+/*Controlls the individual book page.  Allows user to request book from other user via email.*/
 class BookViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
@@ -22,11 +23,6 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
 
     struct StringConstants {
         static let userSegueIdentifier = "ShowUserSegue"
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBOutlet weak var bookTitle: UILabel!
@@ -51,6 +47,34 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
         sendToMail(mailController)
     }
     
+    @IBOutlet weak var returnBookButton: UIButton!
+    
+    var currentBook: Book? {
+        didSet {
+            setView()
+        }
+    }
+    
+    //manage UI elements
+    func setView() {
+        if let currentBook = currentBook {
+            if let bookTitle = bookTitle {
+                bookTitle.adjustsFontSizeToFitWidth = true
+                bookImage.contentMode = .ScaleAspectFit
+                bookTitle.text = currentBook.title
+                bookOwner.setTitle(currentBook.owner!.username, forState: .Normal)
+                bookImage.image = UIImage(named: currentBook.image!)
+                returnBookButton.enabled = currentBook.borrowed
+                if currentBook.free {
+                    buyBookButton.setTitle("Borrow book", forState: .Normal)
+                }
+            }
+        }
+    }
+    
+    // - MARK: email
+    
+    /*Try to send mail*/
     func sendToMail(mailController: MFMailComposeViewController) {
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailController, animated: true, completion: nil)
@@ -61,6 +85,7 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
         }
     }
     
+    /*Set-up mail*/
     func buildMailController(withRecipient recipient: String, withSubjectLine subject: String, withBodyText text: String) -> MFMailComposeViewController {
         let mailController = MFMailComposeViewController()
         mailController.mailComposeDelegate = self
@@ -75,41 +100,17 @@ class BookViewController: UIViewController, MFMailComposeViewControllerDelegate 
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBOutlet weak var returnBookButton: UIButton!
-    
-    var currentBook: Book? {
-        didSet {
-            setView()
-        }
-    }
-    
-    func setView() {
-        if let currentBook = currentBook {
-            if let bookTitle = bookTitle { //FIXME: is this line necessary?
-                bookTitle.adjustsFontSizeToFitWidth = true
-                bookImage.contentMode = .ScaleAspectFit
-                bookTitle.text = currentBook.title
-                bookOwner.setTitle(currentBook.owner!.username, forState: .Normal)
-                bookImage.image = UIImage(named: currentBook.image!)
-                returnBookButton.enabled = currentBook.borrowed
-                if currentBook.free {
-                    buyBookButton.setTitle("Borrow book", forState: .Normal)
-                }
-            }
-        }
-
-    }
-    
     
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.userSegueIdentifier {
             if let destination = segue.destinationViewController as? PersonalUserViewController {
-                    destination.userForPage = currentBook!.owner!
+                if let currentBook = currentBook {
+                    destination.userForPage = currentBook.owner!
+                }
             }
         }
     }
-
 
 }

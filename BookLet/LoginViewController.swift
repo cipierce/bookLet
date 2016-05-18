@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*This class controls the login page.  The user can login as a new or existing user.*/
 class LoginViewController: UIViewController {
     
     var data = Data()
@@ -16,6 +17,11 @@ class LoginViewController: UIViewController {
     
     struct StringConstants {
         static let loginSegueIdentifier = "LoginSegue"
+        static let empty = ""
+        static let incorrectPasswordError = "Incorrect password, please try again"
+        static let emptyPasswordError = "Please enter a password"
+        static let emptyEmailAddressError = "Please enter an email address"
+        static let emptyUsernameError = "Please enter a username"
     }
 
     @IBOutlet weak var usernameField: UITextField!
@@ -24,33 +30,39 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    /*Manage UI elements*/
     func fixTextFields() {
-        usernameField.autocapitalizationType = .None
-        usernameField.autocorrectionType = .No
-        emailAddressField.autocorrectionType = .No
-        emailAddressField.autocapitalizationType = .None
-        passwordField.autocapitalizationType = .None
-        passwordField.autocorrectionType = .No
+        if let usernameField = usernameField {
+            usernameField.autocapitalizationType = .None
+            usernameField.autocorrectionType = .No
+        }
+        if let emailAddressField = emailAddressField {
+            emailAddressField.autocorrectionType = .No
+            emailAddressField.autocapitalizationType = .None
+        }
+        if let passwordField = passwordField {
+            passwordField.autocapitalizationType = .None
+            passwordField.autocorrectionType = .No
+        }
     }
 
     @IBOutlet weak var newUserButton: UIButton!
-    @IBAction func loginAsNew() {
-        login(asNewUser: true)
-    }
+    @IBAction func loginAsNew() { login(asNewUser: true) }
     
     @IBOutlet weak var existingUserButton: UIButton!
-    @IBAction func loginAsExisting(sender: UIButton) {
-        login(asNewUser: false)
-    }
+    @IBAction func loginAsExisting(sender: UIButton) { login(asNewUser: false) }
     
+    /*This handles the login logic.  For new users, they must submit a username that is not already in use.
+    ** If successful, they are added to CoreData as a new user.  For existing users, they must use the correct
+    ** password. All fields must be populated in either case.*/
     func login(asNewUser asNewUser: Bool) {
-        var alertText = ""
+        var alertText = StringConstants.empty
         if let username = usernameField.text {
-            if username != "" {
+            if username != StringConstants.empty {
                 if let emailAddress = emailAddressField.text {
-                    if emailAddress != "" {
+                    if emailAddress != StringConstants.empty {
                         if let userPassword = passwordField.text {
-                            if userPassword != "" {
+                            if userPassword != StringConstants.empty {
                                 if asNewUser {
                                     if let error = data.addUser(username: username, emailAddress: emailAddress, userPassword: userPassword) {
                                         alertText = error
@@ -64,7 +76,7 @@ class LoginViewController: UIViewController {
                                             loginUser = returningUser
                                             return
                                         } else {
-                                            alertText = "Incorrect password, please try again"
+                                            alertText = StringConstants.incorrectPasswordError
                                         }
                                         
                                     } else {
@@ -72,15 +84,15 @@ class LoginViewController: UIViewController {
                                     }
                                 }
                             } else {
-                                alertText = "Please enter a password"
+                                alertText = StringConstants.emptyPasswordError
                             }
                         }
                     } else {
-                        alertText = "Please enter an email address"
+                        alertText = StringConstants.emptyEmailAddressError
                     }
                 }
             } else {
-                alertText = "Please enter a username"
+                alertText = StringConstants.emptyUsernameError
             }
         }
         let alert = UIAlertController(title: "Oops!", message: alertText, preferredStyle: UIAlertControllerStyle.Alert)
@@ -96,12 +108,14 @@ class LoginViewController: UIViewController {
     
     // MARK: - Navigation
     
+    /*Set up current user and create custom back button*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.loginSegueIdentifier {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.currentUser = loginUser
+            if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+                appDelegate.currentUser = loginUser
+            }
             let backButton = UIBarButtonItem()
-            backButton.title = ""
+            backButton.title = StringConstants.empty
             backButton.setBackButtonBackgroundImage(UIImage(named: "logout"), forState: .Normal, barMetrics: .Default)
             navigationItem.backBarButtonItem = backButton
         }

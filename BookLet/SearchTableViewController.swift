@@ -8,9 +8,9 @@
 
 import UIKit
 
+/*Search all books implemented by adapting the following tutorial:
+** https://www.raywenderlich.com/113772/uisearchcontroller-tutorial */
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
-    /*Search implemented by adapting tutorial:
-    ** https://www.raywenderlich.com/113772/uisearchcontroller-tutorial */
     
     struct StringConstants {
         static let bookSegueIdentifier = "ShowSearchResult"
@@ -37,12 +37,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Sets up observer for reloading data when user adds a new book.
         NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
             self.tableView.reloadData()
         })
-        if let font = UIFont(name: "Avenir", size: 20) {
-            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
-        }
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -80,7 +78,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Set up information for book page 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == StringConstants.bookSegueIdentifier {
             if let destination = segue.destinationViewController as? BookViewController {

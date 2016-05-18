@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class DataController: NSObject {
-    // MARK: - Core Data stack code from Apple
+    // MARK: - Core Data stack code from Apple - the only modifications we made were replacing default names with "coreDataModel" where appropriate
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "uk.co.plymouthsoftware.core_data" in the application's documents Application Support directory.
