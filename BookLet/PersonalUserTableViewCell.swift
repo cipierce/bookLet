@@ -18,6 +18,7 @@ class PersonalUserTableViewCell: UITableViewCell {
 
 extension PersonalUserTableViewCell {
     
+    
     func setCollectionViewDataSourceDelegate <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataSourceDelegate: D, forSection section: Int) {
         collectionView.delegate = dataSourceDelegate
         collectionView.dataSource = dataSourceDelegate

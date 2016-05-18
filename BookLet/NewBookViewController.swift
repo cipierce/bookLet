@@ -8,7 +8,9 @@
 
 import UIKit
 
-class NewBookViewController: UIViewController {
+class NewBookViewController: UIViewController{
+
+
 
     let data = Data()
     
@@ -24,6 +26,9 @@ class NewBookViewController: UIViewController {
         setupOptions()
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         currentUser = delegate.currentUser
+        if let font = UIFont(name: "Avenir", size: 20) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,6 +94,4 @@ class NewBookViewController: UIViewController {
             }
         }
     }
-
-
 }

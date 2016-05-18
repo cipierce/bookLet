@@ -22,11 +22,15 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailAddressField: UITextField!
     
+    @IBOutlet weak var passwordField: UITextField!
+    
     func fixTextFields() {
         usernameField.autocapitalizationType = .None
         usernameField.autocorrectionType = .No
         emailAddressField.autocorrectionType = .No
         emailAddressField.autocapitalizationType = .None
+        passwordField.autocapitalizationType = .None
+        passwordField.autocorrectionType = .No
     }
 
     @IBOutlet weak var newUserButton: UIButton!
@@ -45,19 +49,30 @@ class LoginViewController: UIViewController {
             if username != "" {
                 if let emailAddress = emailAddressField.text {
                     if emailAddress != "" {
-                        if asNewUser {
-                            if let error = data.addUser(username: username, emailAddress: emailAddress) {
-                                alertText = error
+                        if let userPassword = passwordField.text {
+                            if userPassword != "" {
+                                if asNewUser {
+                                    if let error = data.addUser(username: username, emailAddress: emailAddress, userPassword: userPassword) {
+                                        alertText = error
+                                    } else {
+                                        loginUser = data.fetchUserWithUsername(username)
+                                        return
+                                    }
+                                } else {
+                                    if let returningUser = data.fetchUserWithUsername(username) {
+                                        if userPassword == returningUser.userPassword {
+                                            loginUser = returningUser
+                                            return
+                                        } else {
+                                            alertText = "Incorrect password, please try again"
+                                        }
+                                        
+                                    } else {
+                                        alertText = "No user exists with username \(username)"
+                                    }
+                                }
                             } else {
-                                loginUser = data.fetchUserWithUsername(username)
-                                return
-                            }
-                        } else {
-                            if let returningUser = data.fetchUserWithUsername(username) {
-                                loginUser = returningUser
-                                return
-                            } else {
-                                alertText = "No user exists with username \(username)"
+                                alertText = "Please enter a password"
                             }
                         }
                     } else {
@@ -76,7 +91,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fixTextFields()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bookBackground")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "booksT")!)
     }
     
     // MARK: - Navigation

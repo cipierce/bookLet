@@ -14,10 +14,14 @@ class Data {
     
     let managedObjectContext = DataController().managedObjectContext
     
-    func addUser(username username: String, emailAddress: String) -> String? {
+    func addUser(username username: String, emailAddress: String, userPassword: String) -> String? {
+        print("made it into add user")
         let entity = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as! User
+        print("1")
         entity.setValue(username, forKey: "username")
         entity.setValue(emailAddress, forKey: "emailAddress")
+        entity.setValue(userPassword, forKey: "userPassword")
+        print("2")
         do {
             try managedObjectContext.save()
         } catch {

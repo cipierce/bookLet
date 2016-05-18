@@ -23,6 +23,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     let searchController = UISearchController(searchResultsController: nil)
     
+    
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredData = data.fetchAllBooks().filter { book in
                 return book.title!.lowercaseString.containsString(searchText.lowercaseString)
@@ -39,6 +40,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
             self.tableView.reloadData()
         })
+        if let font = UIFont(name: "Avenir", size: 20) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
+        }
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true

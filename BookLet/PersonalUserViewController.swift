@@ -12,6 +12,9 @@ class PersonalUserViewController: UITableViewController {
     /*used this tutorial for the framework of this page:
     ** https://ashfurrow.com/blog/putting-a-uicollectionview-in-a-uitableviewcell-in-swift/ */
     
+    /* used code from Jayesh Miruliya's StackOverflow to change fonts in TableView headers:
+    http://stackoverflow.com/questions/31381762/swift-ios-8-change-font-title-of-section-in-a-tableview */
+    
     let data = Data()
     
     var model = [Int: [Book]]()
@@ -67,6 +70,7 @@ class PersonalUserViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Personal User Table View Cell", forIndexPath: indexPath)
+        cell.textLabel?.font = UIFont(name: "Avenir", size: 22)
         return cell
     }
     
@@ -91,7 +95,16 @@ class PersonalUserViewController: UITableViewController {
         return categories[section]
     }
     
-    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let rowTitle = UILabel()
+        rowTitle.font = UIFont(name: "Avenir", size: 18)!
+        rowTitle.textColor = UIColor.grayColor()
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font=rowTitle.font
+        header.textLabel?.textColor=rowTitle.textColor
+    }
+
 }
 
 extension PersonalUserViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -123,6 +136,7 @@ extension PersonalUserViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         print("collection view at row \(collectionView.tag) selected index path \(indexPath)")
     }
+    
 
 
 }

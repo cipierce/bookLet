@@ -25,6 +25,9 @@ class FeedTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(StringConstants.reloadDataIdentifier, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
                 self.tableView.reloadData()
         })
+        if let font = UIFont(name: "Avenir", size: 20) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font]
+        }
     }
 
     // MARK: - Table view data source

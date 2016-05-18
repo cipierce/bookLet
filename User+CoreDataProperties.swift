@@ -16,6 +16,7 @@ extension User {
 
     @NSManaged var emailAddress: String?
     @NSManaged var username: String?
+    @NSManaged var userPassword: String?
     @NSManaged var borrowedBooks: NSSet?
     @NSManaged var postedBooks: NSSet?
     @NSManaged var favoriteBooks: NSSet?
